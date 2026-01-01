@@ -3,398 +3,515 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KameraRepussa - Valokuvauspalvelut</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>Charley Knox - Photography</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Yleiset tyylit */
+        /* Perustyylit */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            background-color: #f9f9f9;
             color: #333;
-            background-color: #fefefe;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
-        
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 700;
-            color: #2c3e50;
-        }
-        
-        a {
-            text-decoration: none;
-            color: #3498db;
-            transition: color 0.3s;
-        }
-        
-        a:hover {
-            color: #2980b9;
-        }
-        
-        /* Header ja navigointi */
+
+        /* Header & Navigaatio */
         header {
-            text-align: center;
-            padding: 2rem 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-        
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
         .logo {
-            font-size: 2.5rem;
+            font-size: 28px;
             font-weight: 700;
-            color: #2c3e50;
+            color: #222;
             letter-spacing: 1px;
         }
-        
+
         .logo span {
             color: #e74c3c;
         }
-        
-        .tagline {
-            font-size: 1.2rem;
-            color: #7f8c8d;
-            margin-top: 0.5rem;
-            font-style: italic;
+
+        .nav-links {
+            display: flex;
+            list-style: none;
         }
-        
-        nav {
-            margin-top: 1.5rem;
+
+        .nav-links li {
+            margin-left: 30px;
         }
-        
-        nav a {
-            margin: 0 1rem;
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
             font-weight: 600;
-            color: #2c3e50;
+            font-size: 16px;
+            transition: color 0.3s;
         }
-        
-        nav a:hover {
+
+        .nav-links a:hover {
             color: #e74c3c;
         }
-        
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
         /* Hero-osa */
         .hero {
-            text-align: center;
-            padding: 3rem 1rem;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
             background-size: cover;
             background-position: center;
-            border-radius: 10px;
-            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
         }
-        
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
         }
-        
-        .hero p {
+
+        .hero-content p {
             font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: #555;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
-        
-        .cta-button {
+
+        .btn {
             display: inline-block;
             background-color: #e74c3c;
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
+            border: 2px solid #e74c3c;
         }
-        
-        .cta-button:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+
+        .btn:hover {
+            background-color: transparent;
+            color: #e74c3c;
         }
-        
-        /* Galleria */
-        .gallery-section {
-            margin-bottom: 3rem;
+
+        /* Osiot */
+        section {
+            padding: 80px 0;
         }
-        
+
         .section-title {
             text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 10px;
+            margin-bottom: 50px;
         }
-        
-        .section-title:after {
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #222;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
             content: '';
             position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #e74c3c;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background-color: #e74c3c;
         }
-        
-        .gallery {
+
+        /* Portfolio */
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            height: 250px;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-        
-        .image-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.7);
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.9rem;
-        }
-        
-        /* Palvelut */
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 25px;
-            margin-bottom: 3rem;
         }
-        
-        .service-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
+
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
+            background-color: white;
         }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
         }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: #e74c3c;
+
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
         }
-        
-        .service-card h3 {
-            margin-bottom: 0.5rem;
+
+        .portfolio-item h3 {
+            padding: 20px;
             font-size: 1.3rem;
         }
-        
-        /* Yhteystiedot */
-        .contact {
-            background-color: #f8f9fa;
-            padding: 2.5rem;
-            border-radius: 10px;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin-top: 1.5rem;
-        }
-        
-        .contact-item {
+
+        /* About */
+        .about-content {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 50px;
         }
-        
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #222;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* Contact */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .contact-info-item i {
+            background-color: #e74c3c;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
         /* Footer */
         footer {
+            background-color: #222;
+            color: #ddd;
             text-align: center;
-            padding: 2rem 0;
-            border-top: 1px solid #eee;
-            color: #7f8c8d;
-            font-size: 0.9rem;
+            padding: 30px 0;
         }
-        
+
         .social-icons {
-            margin: 1rem 0;
+            margin-bottom: 20px;
         }
-        
+
         .social-icons a {
-            display: inline-block;
+            color: white;
             margin: 0 10px;
-            font-size: 1.2rem;
-            color: #7f8c8d;
+            font-size: 20px;
+            transition: color 0.3s;
         }
-        
+
         .social-icons a:hover {
             color: #e74c3c;
         }
-        
+
         /* Responsiivisuus */
-        @media (max-width: 768px) {
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            nav a {
-                display: block;
-                margin: 0.5rem 0;
-            }
-            
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-info {
+        @media (max-width: 992px) {
+            .about-content, .contact-content {
                 flex-direction: column;
-                align-items: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header ja navigointi -->
+    <!-- Header & Navigaatio -->
     <header>
-        <div class="logo">Kamera<span>Repussa</span></div>
-        <p class="tagline">Tarinat kuvina, hetket ikuisiksi</p>
-        <nav>
-            <a href="#gallery">Galleria</a>
-            <a href="#services">Palvelut</a>
-            <a href="#about">Tietoja</a>
-            <a href="#contact">Ota yhteyttä</a>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">CK<span>P</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Koti</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#about">Minusta</a></li>
+                    <li><a href="#contact">Ota yhteyttä</a></li>
+                </ul>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero-osa -->
-    <section class="hero">
-        <h2>Luonnonkauniit hetket ikuistettuna</h2>
-        <p>Olen intohimoinen valokuvaaja, joka tarttuu kameraan hetkissä, jotka kertovat tarinan. Luonto, maisemat ja aito tunteet ovat sydäntäni lähellä.</p>
-        <a href="#contact" class="cta-button">Pyydä tarjous</a>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Charley Knox</h1>
+            <p>VALOKUVAUS | LUOVUUS | TARINANKERTOMINEN</p>
+            <a href="#portfolio" class="btn">Näytä portfolio</a>
+        </div>
     </section>
 
-    <!-- Galleria -->
-    <section id="gallery" class="gallery-section">
-        <h2 class="section-title">Galleria</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Auringonlasku järvellä">
-                <div class="image-caption">Auringonlasku järvellä | Kesäkuu 2023</div>
+    <!-- Portfolio -->
+    <section id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio</h2>
             </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metsäpolku syksyllä">
-                <div class="image-caption">Metsäpolku syksyllä | Lokakuu 2023</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Järvimaisema aamukasteessa">
-                <div class="image-caption">Järvimaisema aamukasteessa | Elokuu 2023</div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Portfolio kuva 1">
+                    <h3>Maisemavalokuvaus</h3>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Portfolio kuva 2">
+                    <h3>Portrait-sarja</h3>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Portfolio kuva 3">
+                    <h3>Tapahtumavalokuvaus</h3>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Palvelut -->
-    <section id="services" class="gallery-section">
-        <h2 class="section-title">Palvelut</h2>
-        <div class="services">
-            <div class="service-card">
-                <div class="service-icon">📸</div>
-                <h3>Tapahtumakuvaaja</h3>
-                <p>Häät, syntymäpäivät, yritystapahtumat. Tallennan tärkeät hetket elämästäsi.</p>
+    <!-- About -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Minusta</h2>
             </div>
-            <div class="service-card">
-                <div class="service-icon">🌄</div>
-                <h3>Luontokuvaus</h3>
-                <p>Maisemat, eläimet, kasvit. Luonnon kauneus kuvattuna oikealla hetkellä.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🖼️</div>
-                <h3>Taideprintit</h3>
-                <p>Valokuvista korkealaatuisia taideprinttejä kotiisi tai lahjaksi.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>Kuvankäsittely</h3>
-                <p>Valmiiden kuvien editointi, värien parannus ja korjaukset.</p>
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Charley Knox">
+                </div>
+                <div class="about-text">
+                    <h3>Valokuvaaja ja tarinankertoja</h3>
+                    <p>Hei, olen Charley Knox, intohimoinen valokuvaaja, joka uskoo, että jokainen hetki kertoo tarinan. Olen erikoistunut maisema-, portrait- ja tapahtumavalokuvaukseen.</p>
+                    <p>Yli 10 vuoden kokemuksella olen työskennellyt monenlaisissa projekteissa ja saanut kunnian kuvata kauniita hetkiä ympäri maailmaa.</p>
+                    <p>Minulle valokuvaus ei ole vain kuvien ottamista, vaan tunteiden ja tarinoiden ikuistamista yhdellä kehyksellä.</p>
+                    <a href="#contact" class="btn">Ota yhteyttä</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Yhteystiedot -->
-    <section id="contact" class="contact">
-        <h2 class="section-title">Ota yhteyttä</h2>
-        <p>Kiinnostuitko yhteistyöstä? Ota rohkeasti yhteyttä, niin keskustellaan tarpeistasi!</p>
-        
-        <div class="contact-info">
-            <div class="contact-item">
-                <span>📧</span>
-                <span>duvinh77@gmail.com</span>
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ota yhteyttä</h2>
             </div>
-            <div class="contact-item">
-                <span>📱</span>
-                <span>+358445770052</span>
-            </div>
-            <div class="contact-item">
-                <span>📍</span>
-                <span>Turku, Suomi</span>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Osoite</h3>
+                            <p>Valokuvaajankatu 15, 00100 Helsinki</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Puhelin</h3>
+                            <p>+358 40 123 4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Sähköposti</h3>
+                            <p>info@charleyknox.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nimesi" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Sähköpostisi" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Viestisi" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Lähetä viesti</button>
+                    </form>
+                </div>
             </div>
         </div>
-        
-        <p style="margin-top: 20px;">Vastaan viesteihin 24h sisällä.</p>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="social-icons">
-            <a href="#">📘</a>
-            <a href="#">📷</a>
-            <a href="#">💼</a>
-            <a href="#">📹</a>
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+            <p>&copy; 2024 Charley Knox Photography. Kaikki oikeudet pidätetään.</p>
         </div>
-        <p>KameraRepussa.fi © 2026 | Kaikki kuvat tekijän omaisuutta</p>
-                <p>Seuraa Instagramissa: <a href="https://www.instagram.com/kamerarepussa/" target="_blank" style="color: #E1306C; font-weight: 600;">@kamerarepussa</a></p>
-        <p>Sivusto on alustava esittelysivu</p>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Sulje mobiilivalikko klikattaessa linkkiä
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Lomakkeen käsittely
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Kiitos viestistäsi! Otamme sinuun yhteyttä mahdollisimman pian.');
+            contactForm.reset();
+        });
+        
+        // Sileä scrollaus navigaatiossa
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
