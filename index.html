@@ -3,500 +3,594 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Du Phan - Valokuvaaja</title>
+    <title>KameraRepussa - Valokuvauspalvelut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* Yleiset tyylit */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
-        }
-
-        .container {
-            width: 90%;
+            color: #333;
+            background-color: #fefefe;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
-
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-
-        .logo {
-            font-size: 28px;
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
-            color: #222;
+            color: #2c3e50;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #3498db;
+            transition: color 0.3s;
+        }
+        
+        a:hover {
+            color: #2980b9;
+        }
+        
+        /* Header ja navigointi */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
             letter-spacing: 1px;
         }
-
+        
         .logo span {
             color: #e74c3c;
         }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+            font-style: italic;
         }
-
-        .nav-links li {
-            margin-left: 30px;
+        
+        nav {
+            margin-top: 1.5rem;
         }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #555;
+        
+        nav a {
+            margin: 0 1rem;
             font-weight: 600;
-            font-size: 16px;
-            transition: color 0.3s;
+            color: #2c3e50;
         }
-
-        .nav-links a:hover {
+        
+        nav a:hover {
             color: #e74c3c;
         }
-
-        .mobile-menu-btn {
-            display: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #333;
-        }
-
+        
+        /* Hero-osa */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('OMA_KUVA_TAUSTA.jpg'); /* VAIHDA TÄHÄN OMA KUVA */
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
             background-size: cover;
             background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 80px;
+            border-radius: 10px;
+            margin-bottom: 3rem;
         }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
         }
-
-        .hero-content p {
+        
+        .hero p {
             font-size: 1.2rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
         }
-
-        .btn {
+        
+        .cta-button {
             display: inline-block;
             background-color: #e74c3c;
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
-            text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
             transition: all 0.3s;
-            border: 2px solid #e74c3c;
+            border: none;
+            cursor: pointer;
         }
-
-        .btn:hover {
-            background-color: transparent;
-            color: #e74c3c;
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        section {
-            padding: 80px 0;
+        
+        /* Galleria */
+        .gallery-section {
+            margin-bottom: 3rem;
         }
-
+        
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #222;
+            margin-bottom: 2rem;
+            font-size: 2rem;
             position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+            padding-bottom: 10px;
         }
-
-        .section-title h2::after {
+        
+        .section-title:after {
             content: '';
             position: absolute;
-            width: 50px;
-            height: 3px;
-            background-color: #e74c3c;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #e74c3c;
         }
-
-        .portfolio-grid {
+        
+        .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
-
-        .portfolio-item {
-            border-radius: 10px;
+        
+        .gallery-item {
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
-            background-color: white;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .portfolio-item img {
-            width: 100%;
             height: 250px;
-            object-fit: cover;
-            display: block;
         }
-
-        .portfolio-item h3 {
-            padding: 20px;
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+        
+        /* Palvelut */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 0.5rem;
             font-size: 1.3rem;
         }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .about-img {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #222;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            color: #555;
-        }
-
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .contact-info-item i {
-            background-color: #e74c3c;
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            font-size: 20px;
-        }
-
+        
+        /* Lomakkeen tyylit */
         .contact-form {
-            flex: 1;
+            max-width: 600px;
+            margin: 2rem auto;
         }
-
+        
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.5rem;
         }
-
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 15px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-size: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
         }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
         }
-
-        footer {
-            background-color: #222;
-            color: #ddd;
-            text-align: center;
-            padding: 30px 0;
-        }
-
-        .social-icons {
-            margin-bottom: 20px;
-        }
-
-        .social-icons a {
-            color: white;
-            margin: 0 10px;
-            font-size: 20px;
-            transition: color 0.3s;
-        }
-
-        .social-icons a:hover {
+        
+        .required {
             color: #e74c3c;
         }
-
-        @media (max-width: 992px) {
-            .about-content, .contact-content {
-                flex-direction: column;
+        
+        .success-message {
+            background-color: #2ecc71;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        /* Yhteystiedot */
+        .contact {
+            background-color: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Instagram-sektio */
+        .instagram-section {
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .instagram-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        .instagram-section p {
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: white;
+            color: #E1306C;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .instagram-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .instagram-link i {
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            margin: 1.5rem 0;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #7f8c8d;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-icons a.instagram {
+            background: linear-gradient(45deg, #405DE6, #833AB4, #E1306C);
+        }
+        
+        .social-icons a.facebook {
+            background-color: #3b5998;
+        }
+        
+        .social-icons a.youtube {
+            background-color: #FF0000;
+        }
+        
+        .social-icons a.tiktok {
+            background-color: #000000;
+        }
+        
+        /* Responsiivisuus */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
             }
             
-            .hero-content h1 {
-                font-size: 3rem;
+            .hero h2 {
+                font-size: 1.8rem;
             }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                flex-direction: column;
-                padding: 20px;
-                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 15px 0;
-            }
-
-            .mobile-menu-btn {
+            
+            nav a {
                 display: block;
+                margin: 0.5rem 0;
             }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .instagram-section {
+                padding: 2rem 1rem;
+            }
+            
+            .contact-form {
+                padding: 0 1rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header ja navigointi -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">CK<span>P</span></div>
-                <ul class="nav-links">
-                    <li><a href="#home">Koti</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">Minusta</a></li>
-                    <li><a href="#contact">Ota yhteyttä</a></li>
-                </ul>
-                <div class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
-        </div>
+        <div class="logo">Kamera<span>Repussa</span></div>
+        <p class="tagline">Tarinat kuvina, hetket ikuisiksi</p>
+        <nav>
+            <a href="#gallery">Galleria</a>
+            <a href="#services">Palvelut</a>
+            <a href="#instagram">Instagram</a>
+            <a href="#contact">Ota yhteyttä</a>
+        </nav>
     </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Du Phan</h1>
-            <p>VALOKUVAUS | LUOVUUS | TARINANKERTOMINEN</p>
-            <a href="#portfolio" class="btn">Näytä portfolio</a>
-        </div>
+    <!-- Hero-osa -->
+    <section class="hero">
+        <h2>Luonnonkauniit hetket ikuistettuna</h2>
+        <p>Olen intohimoinen valokuvaaja, joka tarttuu kameraan hetkissä, jotka kertovat tarinan. Luonto, maisemat ja aito tunteet ovat sydäntäni lähellä.</p>
+        <a href="#contact" class="cta-button">Pyydä tarjous</a>
     </section>
 
-    <section id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Portfolio</h2>
+    <!-- Galleria -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Galleria</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Auringonlasku järvellä">
+                <div class="image-caption">Auringonlasku järvellä | Kesäkuu 2023</div>
             </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="OMA_KUVA1.jpg" alt="Portfolio kuva 1"> <!-- VAIHDA OMA KUVA -->
-                    <h3>Maisemavalokuvaus</h3>
-                </div>
-                <div class="portfolio-item">
-                    <img src="OMA_KUVA2.jpg" alt="Portfolio kuva 2"> <!-- VAIHDA OMA KUVA -->
-                    <h3>Portrait-sarja</h3>
-                </div>
-                <div class="portfolio-item">
-                    <img src="OMA_KUVA3.jpg" alt="Portfolio kuva 3"> <!-- VAIHDA OMA KUVA -->
-                    <h3>Tapahtumavalokuvaus</h3>
-                </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metsäpolku syksyllä">
+                <div class="image-caption">Metsäpolku syksyllä | Lokakuu 2023</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Järvimaisema aamukasteessa">
+                <div class="image-caption">Järvimaisema aamukasteessa | Elokuu 2023</div>
             </div>
         </div>
     </section>
 
-    <section id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>Minusta</h2>
+    <!-- Palvelut -->
+    <section id="services" class="gallery-section">
+        <h2 class="section-title">Palvelut</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>Tapahtumakuvaaja</h3>
+                <p>Häät, syntymäpäivät, yritystapahtumat. Tallennan tärkeät hetket elämästäsi.</p>
             </div>
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="OMA_PROFIILIKUVA.jpg" alt="Charley Knox"> <!-- VAIHDA OMA KUVA -->
-                </div>
-                <div class="about-text">
-                    <h3>Valokuvaaja ja tarinankertoja</h3>
-                    <p>Hei, olen Du Phan, intohimoinen valokuvaaja, joka uskoo, että jokainen hetki kertoo tarinan. Olen erikoistunut maisema-, portrait- ja tapahtumavalokuvaukseen.</p>
-                    <p>Yli 10 vuoden kokemuksella olen työskennellyt monenlaisissa projekteissa ja saanut kunnian kuvata kauniita hetkiä.</p>
-                    <p>Minulle valokuvaus ei ole vain kuvien ottamista, vaan tunteiden ja tarinoiden ikuistamista yhdellä kehyksellä.</p>
-                    <a href="#contact" class="btn">Ota yhteyttä</a>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🌄</div>
+                <h3>Luontokuvaus</h3>
+                <p>Maisemat, eläimet, kasvit. Luonnon kauneus kuvattuna oikealla hetkellä.</p>
             </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ota yhteyttä</h2>
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <h3>Taideprintit</h3>
+                <p>Valokuvista korkealaatuisia taideprinttejä kotiisi tai lahjaksi.</p>
             </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Osoite</h3>
-                            <p>Eerikinkatu 16, 20100 Turku</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Puhelin</h3>
-                            <p>+358445770052</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Sähköposti</h3>
-                            <p>duvinh77@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item">
-                        <i class="fab fa-instagram"></i>
-                        <div>
-                            <h3>Instagram</h3>
-                            <p><a href="https://www.instagram.com/kamerarepussa/" target="_blank" style="color:#e74c3c; text-decoration:none;">@kamerarepussa</a></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Nimesi" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Sähköpostisi" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Viestisi" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Lähetä viesti</button>
-                    </form>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Kuvankäsittely</h3>
+                <p>Valmiiden kuvien editointi, värien parannus ja korjaukset.</p>
             </div>
         </div>
     </section>
 
+    <!-- Instagram-sektio -->
+    <section id="instagram" class="instagram-section">
+        <h2 class="section-title">Seuraa Instagramissa</h2>
+        <p>Päivittäistä kuvien ottamista, takakameroita ja vinkkejä valokuvaamiseen. Nähdään Instagramissa!</p>
+        <a href="https://www.instagram.com/kamerarepussa/" target="_blank" class="instagram-link">
+            <i class="fab fa-instagram"></i>
+            @kamerarepussa
+        </a>
+    </section>
+
+    <!-- Yhteystiedot ja toimiva lomake -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Ota yhteyttä</h2>
+        <p>Kiinnostuitko yhteistyöstä? Täytä lomake, niin otan yhteyttä 24h sisällä!</p>
+        
+        <div id="successMessage" class="success-message">
+            Kiitos viestistäsi! Olen yhteydessä pian.
+        </div>
+        
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/mqeaealg" method="POST">
+            <div class="form-group">
+                <label for="name">Nimesi <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required placeholder="Kirjoita nimesi">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Sähköpostisi <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required placeholder="sähköposti@esimerkki.fi">
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Viestisi <span class="required">*</span></label>
+                <textarea id="message" name="message" rows="5" required placeholder="Miten voin auttaa?"></textarea>
+            </div>
+            
+            <button type="submit" class="cta-button" style="width: 100%;">Lähetä viesti</button>
+        </form>
+        
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>kuvaus@kamerarepussa.fi</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>+358 40 123 4567</span>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Helsinki, Suomi</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="social-icons">
-                <a href="https://www.instagram.com/kamerarepussa/" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-            </div>
-            <p>&copy; 2026 Du Phan. Kaikki oikeudet pidätetään.</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/kamerarepussa/" target="_blank" class="instagram" title="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="facebook" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="youtube" title="YouTube">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="#" class="tiktok" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+            </a>
         </div>
+        <p>KameraRepussa.fi © <span id="currentYear"></span> | Kaikki kuvat tekijän omaisuutta</p>
+        <p>Seuraa Instagramissa: <a href="https://www.instagram.com/kamerarepussa/" target="_blank" style="color: #E1306C; font-weight: 600;">@kamerarepussa</a></p>
     </footer>
 
     <script>
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
+        // Näytä onnistumisviesti lomakkeen lähetyksen jälkeen
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            // Estetään oletustoiminta, koska Formspree hoitaa lähetyksen
+            // Voit lisätä tähän lisää toiminnallisuutta tarvittaessa
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('contactForm').reset();
+                
+                // Piilota viesti 5 sekunnin jälkeen
+                setTimeout(function() {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 5000);
+            }, 100);
         });
         
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
+        // Aseta vuosi footeriin automaattisesti
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
         
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Kiitos viestistäsi! Otamme sinuun yhteyttä mahdollisimman pian.');
-            contactForm.reset();
-        });
-        
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // Siirry navigointilinkin kohdalle sulavasti
+        document.querySelectorAll('nav a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                if(targetId.startsWith('#')) {
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
                 }
             });
         });
