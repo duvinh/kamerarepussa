@@ -80,7 +80,6 @@
         /* Hero-osio */
         .hero {
             height: 100vh;
-            background-color: #1a1a1a;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -430,7 +429,7 @@
     <!-- Header ja navigaatio -->
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">CK<span>P</span></a>
+            <a href="#" class="logo">Kamerarepussa</a>
             <ul class="nav-links">
                 <li><a href="#home">Etusivu</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -442,12 +441,13 @@
 
     <!-- Hero-osio -->
     <!-- VAIHDA OMA KUVA TÄHÄN: -->
-    <!-- 1. Poista "background-color: #1a1a1a;" -->
-    <!-- 2. Lisää "background-image: url('omat-kuvat/hero-kuva.jpg');" -->
-    <section id="home" class="hero" style="background-image: url('Kateriina.jpg');">
+    <!-- 1. Vaihda "Kateriina.jpg" oman kuvan nimeen -->
+    <!-- 2. Tai jos haluat vain värin, poista background-image ja lisää background-color -->
+    <section id="home" class="hero" style="background-image: url('Kateriina.jpg'); background-color: #1a1a1a;">
         <div class="hero-content">
             <h1>Kamerarepussa</h1>
-             <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan. Tervetuloa maailmaani, jossa valo ja tunnelma kohtaavat.</p>
+            <h2>Du Phan Valokuvaus</h2>
+            <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan. Tervetuloa maailmaani, jossa valo ja tunnelma kohtaavat.</p>
             <a href="#portfolio" class="btn">Portfolio</a>
             <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
         </div>
@@ -459,45 +459,62 @@
             <h2>Portfolio</h2>
         </div>
         <div class="portfolio-grid">
-            <!-- KUVA 1: Vaihda src="omat-kuvat/kuva1.jpg" -->
+            <!-- KUVA 1: Vaihda src="kuva1.jpg" -->
             <div class="portfolio-item">
-                <img src="" alt="Maisemakuva">
+                <img src="kuva1.jpg" alt="Maisemakuva" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Maisemat</h3>
                 </div>
             </div>
             
-            <!-- KUVA 2: Vaihda src="omat-kuvat/kuva2.jpg" -->
+            <!-- KUVA 2: Vaihda src="kuva2.jpg" -->
             <div class="portfolio-item">
-                <img src="" alt="Portrait">
+                <img src="kuva2.jpg" alt="Portrait" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Portrait</h3>
                 </div>
             </div>
                
-            <!-- KUVA 4: Vaihda src="omat-kuvat/kuva4.jpg" -->
+            <!-- KUVA 3: Vaihda src="kuva3.jpg" -->
             <div class="portfolio-item">
-                <img src="" alt="Tapahtumakuva">
+                <img src="kuva3.jpg" alt="Eläimet" onerror="this.style.display='none'">
+                <div class="portfolio-overlay">
+                    <h3>Eläimet</h3>
+                </div>
+            </div>
+            
+            <!-- KUVA 4: Vaihda src="kuva4.jpg" -->
+            <div class="portfolio-item">
+                <img src="kuva4.jpg" alt="Tapahtumakuva" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Tapahtumat</h3>
                 </div>
             </div>
             
-            <!-- KUVA 5: Vaihda src="omat-kuvat/kuva5.jpg" -->
+            <!-- KUVA 5: Vaihda src="kuva5.jpg" -->
             <div class="portfolio-item">
-                <img src="" alt="Luonto">
+                <img src="kuva5.jpg" alt="Luonto" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Luonto</h3>
                 </div>
             </div>
+            
+            <!-- KUVA 6: Vaihda src="kuva6.jpg" -->
+            <div class="portfolio-item">
+                <img src="kuva6.jpg" alt="Matkat" onerror="this.style.display='none'">
+                <div class="portfolio-overlay">
+                    <h3>Matkat</h3>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About-osio -->
     <section id="about" class="about-section">
         <div class="about-content">
             <div class="about-img">
-                <!-- OMA KUVA TÄHÄN: Vaihda src="omat-kuvat/profiilikuva.jpg" -->
-                <img src="" alt="Du Phan">
+                <!-- OMA KUVA TÄHÄN: Vaihda src="profiilikuva.jpg" -->
+                <img src="profiilikuva.jpg" alt="Du Phan" onerror="this.style.backgroundColor='#ddd'">
             </div>
             <div class="about-text">
                 <h2>Minusta</h2>
@@ -546,7 +563,7 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">CK<span>P</span></div>
+        <div class="footer-logo">Kamerarepussa</div>
         <p>Du Phan Valokuvaus</p>
         <p class="copyright">&copy; <span id="currentYear"></span> Du Phan. Kaikki oikeudet pidätetään.</p>
     </footer>
