@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charley Knox - Photography</title>
+    <title>Du Phan - Valokuvaaja</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Perustyylit */
         * {
             margin: 0;
             padding: 0;
@@ -27,7 +26,6 @@
             padding: 0 20px;
         }
 
-        /* Header & Navigaatio */
         header {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -83,11 +81,10 @@
             color: #333;
         }
 
-        /* Hero-osa */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                        url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80');
+                        url('OMA_KUVA_TAUSTA.jpg'); /* VAIHDA TÄHÄN OMA KUVA */
             background-size: cover;
             background-position: center;
             display: flex;
@@ -127,7 +124,6 @@
             color: #e74c3c;
         }
 
-        /* Osiot */
         section {
             padding: 80px 0;
         }
@@ -156,7 +152,6 @@
             transform: translateX(-50%);
         }
 
-        /* Portfolio */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -187,7 +182,6 @@
             font-size: 1.3rem;
         }
 
-        /* About */
         .about-content {
             display: flex;
             align-items: center;
@@ -222,7 +216,6 @@
             color: #555;
         }
 
-        /* Contact */
         .contact-content {
             display: flex;
             gap: 50px;
@@ -273,7 +266,6 @@
             resize: vertical;
         }
 
-        /* Footer */
         footer {
             background-color: #222;
             color: #ddd;
@@ -296,7 +288,6 @@
             color: #e74c3c;
         }
 
-        /* Responsiivisuus */
         @media (max-width: 992px) {
             .about-content, .contact-content {
                 flex-direction: column;
@@ -339,7 +330,6 @@
     </style>
 </head>
 <body>
-    <!-- Header & Navigaatio -->
     <header>
         <div class="container">
             <nav>
@@ -357,16 +347,14 @@
         </div>
     </header>
 
-    <!-- Hero-osa -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Charley Knox</h1>
+            <h1>Du Phan</h1>
             <p>VALOKUVAUS | LUOVUUS | TARINANKERTOMINEN</p>
             <a href="#portfolio" class="btn">Näytä portfolio</a>
         </div>
     </section>
 
-    <!-- Portfolio -->
     <section id="portfolio">
         <div class="container">
             <div class="section-title">
@@ -374,22 +362,21 @@
             </div>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Portfolio kuva 1">
+                    <img src="OMA_KUVA1.jpg" alt="Portfolio kuva 1"> <!-- VAIHDA OMA KUVA -->
                     <h3>Maisemavalokuvaus</h3>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1374&q=80" alt="Portfolio kuva 2">
+                    <img src="OMA_KUVA2.jpg" alt="Portfolio kuva 2"> <!-- VAIHDA OMA KUVA -->
                     <h3>Portrait-sarja</h3>
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Portfolio kuva 3">
+                    <img src="OMA_KUVA3.jpg" alt="Portfolio kuva 3"> <!-- VAIHDA OMA KUVA -->
                     <h3>Tapahtumavalokuvaus</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About -->
     <section id="about">
         <div class="container">
             <div class="section-title">
@@ -397,12 +384,12 @@
             </div>
             <div class="about-content">
                 <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80" alt="Charley Knox">
+                    <img src="OMA_PROFIILIKUVA.jpg" alt="Charley Knox"> <!-- VAIHDA OMA KUVA -->
                 </div>
                 <div class="about-text">
                     <h3>Valokuvaaja ja tarinankertoja</h3>
-                    <p>Hei, olen Charley Knox, intohimoinen valokuvaaja, joka uskoo, että jokainen hetki kertoo tarinan. Olen erikoistunut maisema-, portrait- ja tapahtumavalokuvaukseen.</p>
-                    <p>Yli 10 vuoden kokemuksella olen työskennellyt monenlaisissa projekteissa ja saanut kunnian kuvata kauniita hetkiä ympäri maailmaa.</p>
+                    <p>Hei, olen Du Phan, intohimoinen valokuvaaja, joka uskoo, että jokainen hetki kertoo tarinan. Olen erikoistunut maisema-, portrait- ja tapahtumavalokuvaukseen.</p>
+                    <p>Yli 10 vuoden kokemuksella olen työskennellyt monenlaisissa projekteissa ja saanut kunnian kuvata kauniita hetkiä.</p>
                     <p>Minulle valokuvaus ei ole vain kuvien ottamista, vaan tunteiden ja tarinoiden ikuistamista yhdellä kehyksellä.</p>
                     <a href="#contact" class="btn">Ota yhteyttä</a>
                 </div>
@@ -410,7 +397,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
         <div class="container">
             <div class="section-title">
@@ -422,21 +408,28 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h3>Osoite</h3>
-                            <p>Valokuvaajankatu 15, 00100 Helsinki</p>
+                            <p>Eerikinkaty 16, 20100 Turku</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <h3>Puhelin</h3>
-                            <p>+358 40 123 4567</p>
+                            <p>+358445770052</p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Sähköposti</h3>
-                            <p>info@charleyknox.com</p>
+                            <p>duvinh77@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h3>Instagram</h3>
+                            <p><a href="https://www.instagram.com/kamerarepussa/" target="_blank" style="color:#e74c3c; text-decoration:none;">@kamerarepussa</a></p>
                         </div>
                     </div>
                 </div>
@@ -458,21 +451,19 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="social-icons">
-                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.instagram.com/kamerarepussa/" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-twitter"></i></a>
                 <a href="#"><i class="fab fa-pinterest-p"></i></a>
             </div>
-            <p>&copy; 2024 Charley Knox Photography. Kaikki oikeudet pidätetään.</p>
+            <p>&copy; 2026 Du Phan. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
         const mobileMenuBtn = document.getElementById('mobileMenuBtn');
         const navLinks = document.querySelector('.nav-links');
         
@@ -480,14 +471,12 @@
             navLinks.classList.toggle('active');
         });
         
-        // Sulje mobiilivalikko klikattaessa linkkiä
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
             });
         });
         
-        // Lomakkeen käsittely
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -495,7 +484,6 @@
             contactForm.reset();
         });
         
-        // Sileä scrollaus navigaatiossa
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
