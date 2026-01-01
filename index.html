@@ -3,245 +3,397 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KAMERAREPUSSAn Portfolio - Editorial Style</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>KameraRepussa - Valokuvauspalvelut</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Käytetään hienostunutta serif-fonttia otsikoille (Playfair Display) 
-           ja puhdasta sans-serif-fonttia sisällölle (Inter) vastaamaan Canvan tyyliä. */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap');
+        /* Yleiset tyylit */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         
-        /* Värit: Tausta on kermanvalkoinen (Beige/Cream) ja teksti on musta. */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f3ed; /* Pehmeä kermanvalkoinen (Beige) */
-            color: #1a1a1a; /* Musta/Tummanharmaa teksti */
             line-height: 1.6;
+            color: #333;
+            background-color: #fefefe;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
+        
         h1, h2, h3 {
             font-family: 'Playfair Display', serif;
-            letter-spacing: 0.05em; /* Pientä kirjainväliä editorial-vaikutelman luomiseksi */
+            font-weight: 700;
+            color: #2c3e50;
         }
         
-        /* Navigaatio linkit */
-        .nav-link {
+        a {
+            text-decoration: none;
+            color: #3498db;
             transition: color 0.3s;
-            text-transform: uppercase;
-        }
-        .nav-link:hover {
-            color: #b8860b; /* Kulta/Ruskea korostusväri */
         }
         
-        /* Galleria tyyli */
-        .gallery-item {
-            overflow: hidden;
-            position: relative;
+        a:hover {
+            color: #2980b9;
+        }
+        
+        /* Header ja navigointi */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+        
+        .logo span {
+            color: #e74c3c;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+        
+        nav {
+            margin-top: 1.5rem;
+        }
+        
+        nav a {
+            margin: 0 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        nav a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Hero-osa */
+        .hero {
+            text-align: center;
+            padding: 3rem 1rem;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: #555;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border: none;
             cursor: pointer;
-            border: 1px solid #e0ddd8; /* Ohut kehys ympärillä */
         }
+        
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Galleria */
+        .gallery-section {
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: #e74c3c;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 250px;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
         .gallery-item img {
-            transition: transform 0.4s ease-in-out;
             width: 100%;
-            height: 400px; /* Kiinteä korkeus, jotta asettelu pysyy siistinä */
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
         }
+        
         .gallery-item:hover img {
-            transform: scale(1.05); /* Pieni zoom-efekti hoverissa */
+            transform: scale(1.05);
         }
-
-        /* Modal styling - avautuva kuvaikkuna */
-        .modal {
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 50;
+        
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
         }
-        .modal-image {
-            max-width: 90vw;
-            max-height: 80vh;
-            object-fit: contain;
+        
+        /* Palvelut */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #e74c3c;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+        
+        /* Yhteystiedot */
+        .contact {
+            background-color: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 0 10px;
+            font-size: 1.2rem;
+            color: #7f8c8d;
+        }
+        
+        .social-icons a:hover {
+            color: #e74c3c;
+        }
+        
+        /* Responsiivisuus */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            nav a {
+                display: block;
+                margin: 0.5rem 0;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen">
-
-    <!-- Navigointipalkki (Musta teksti, Beige tausta) -->
-    <header class="bg-[#f7f3ed] shadow-sm sticky top-0 z-40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-black tracking-widest">
-                KAMERAREPUSSA
-            </a>
-            <nav class="space-x-8 text-sm font-medium">
-                <a href="#portfolio" class="nav-link text-black">Portfolio</a>
-                <a href="#tietoa" class="nav-link text-black">Tietoa</a>
-                <a href="#yhteys" class="nav-link text-black">Ota Yhteyttä</a>
-            </nav>
-        </div>
+<body>
+    <!-- Header ja navigointi -->
+    <header>
+        <div class="logo">Kamera<span>Repussa</span></div>
+        <p class="tagline">Tarinat kuvina, hetket ikuisiksi</p>
+        <nav>
+            <a href="#gallery">Galleria</a>
+            <a href="#services">Palvelut</a>
+            <a href="#about">Tietoja</a>
+            <a href="#contact">Ota yhteyttä</a>
+        </nav>
     </header>
 
-    <!-- Hero Section (Keskellä oleva kuva, leveä otsikko) -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center">
-        <!-- TÄRKEÄÄ: Lisää oma kansikuva! Muista, että tiedoston nimi on sama kuin käytät! -->
-        <img src="Thestickycatsedit4.jpg" 
-             alt="Hienostunut kansikuva" 
-             class="w-full h-[700px] object-cover mb-12 shadow-lg border-2 border-gray-300">
+    <!-- Hero-osa -->
+    <section class="hero">
+        <h2>Luonnonkauniit hetket ikuistettuna</h2>
+        <p>Olen intohimoinen valokuvaaja, joka tarttuu kameraan hetkissä, jotka kertovat tarinan. Luonto, maisemat ja aito tunteet ovat sydäntäni lähellä.</p>
+        <a href="#contact" class="cta-button">Pyydä tarjous</a>
+    </section>
+
+    <!-- Galleria -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Galleria</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Auringonlasku järvellä">
+                <div class="image-caption">Auringonlasku järvellä | Kesäkuu 2023</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metsäpolku syksyllä">
+                <div class="image-caption">Metsäpolku syksyllä | Lokakuu 2023</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Järvimaisema aamukasteessa">
+                <div class="image-caption">Järvimaisema aamukasteessa | Elokuu 2023</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Palvelut -->
+    <section id="services" class="gallery-section">
+        <h2 class="section-title">Palvelut</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-icon">📸</div>
+                <h3>Tapahtumakuvaaja</h3>
+                <p>Häät, syntymäpäivät, yritystapahtumat. Tallennan tärkeät hetket elämästäsi.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🌄</div>
+                <h3>Luontokuvaus</h3>
+                <p>Maisemat, eläimet, kasvit. Luonnon kauneus kuvattuna oikealla hetkellä.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🖼️</div>
+                <h3>Taideprintit</h3>
+                <p>Valokuvista korkealaatuisia taideprinttejä kotiisi tai lahjaksi.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>Kuvankäsittely</h3>
+                <p>Valmiiden kuvien editointi, värien parannus ja korjaukset.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Yhteystiedot -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Ota yhteyttä</h2>
+        <p>Kiinnostuitko yhteistyöstä? Ota rohkeasti yhteyttä, niin keskustellaan tarpeistasi!</p>
         
-        <h1 class="text-6xl md:text-8xl font-light text-black tracking-wider mb-6 leading-none">
-            Visuaaliset Tarinat
-        </h1>
-        <p class="text-xl text-gray-700 max-w-4xl mx-auto">
-            Aitoja ja ajattomia muotokuvia, jotka on taltioitu minimalistisella, editorial-henkisellä otteella.
-        </p>
-    </section>
-
-    <!-- PORTFOLIO / GALLERIA - 3 sarakkeen ruudukko -->
-    <section id="portfolio" class="py-16 bg-[#f7f3ed]">
-        <h2 class="text-5xl font-light text-center mb-12">Työnäytteet</h2>
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Portfolio Items (Käytetään lataamiasi kuvia) -->
-                
-                <div class="gallery-item" onclick="openModal('Thestickycatsedit2.jpg', 'Studiomuotokuva: The sticky cat', 'Henkilökuvaus')">
-                    <img src="Thestickycatsedit2.jpg" alt="Bändikuvaus The sticky cat" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('Duke122025.jpg', 'Muotikuvaus: Duke', 'Henkilökuvaus')">
-                    <img src="Duke122025.jpg" alt="Muotokuva Dukesta" loading="lazy">
-                </div>
-
-                <div class="gallery-item" onclick="openModal('Jasmin.jpg', 'Kulttuurimuotokuva: Jasmin', 'Muotokuvaus')">
-                    <img src="Jasmin.jpg" alt="Muotokuva Jasminesta" loading="lazy">
-                </div>
-
-                <div class="gallery-item" onclick="openModal('Sanni9.jpg', 'Sanni', 'Studiokuvaus')">
-                    <img src="Sanni9.jpg" alt="Muotokuva Sannista" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('sallaeditt2.jpg', 'Salla - Fitness', 'Urheilu')">
-                    <img src="sallaeditt2.jpg" alt="Salla treenikuva" loading="lazy">
-                </div>
-
-                <div class="gallery-item" onclick="openModal('VyEdit11BW.jpg', 'Vy - Mustavalkoinen', 'Mustavalko')">
-                    <img src="VyEdit11BW.jpg" alt="Mustavalkoinen muotokuva Vy:stä" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('Titiedit3.jpg', 'Titi koiran kanssa', 'Lifestyle')">
-                    <img src="Titiedit3.jpg" alt="Titi koiran kanssa" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('TitiEdit4.jpg', 'Titi - Rento potretti', 'Luontokuvaus')">
-                    <img src="TitiEdit4.jpg" alt="Titi ruohikossa" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('Emmmimmmi.jpg', 'Emilia - Auringonlasku', 'Muotokuvaus')">
-                    <img src="Emmmimmmi.jpg" alt="Muotokuva Emmistä auringonlaskussa" loading="lazy">
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('sallaeditt4.jpg', 'Salla - Taidepotretti', 'Fitness/Taide')">
-                    <img src="sallaeditt4.jpg" alt="Salla käsilläseisonta" loading="lazy">
-                </div>
-
+        <div class="contact-info">
+            <div class="contact-item">
+                <span>📧</span>
+                <span>kuvaus@kamerarepussa.fi</span>
+            </div>
+            <div class="contact-item">
+                <span>📱</span>
+                <span>+358 40 123 4567</span>
+            </div>
+            <div class="contact-item">
+                <span>📍</span>
+                <span>Helsinki, Suomi</span>
             </div>
         </div>
-        <div class="text-center mt-12">
-            <a href="#yhteys" class="inline-block bg-black text-white font-semibold py-3 px-8 text-sm uppercase tracking-wider hover:bg-gray-700 transition duration-300 transform hover:scale-105">
-                Katso hinnasto & Ota yhteyttä
-            </a>
-        </div>
+        
+        <p style="margin-top: 20px;">Vastaan viesteihin 24h sisällä.</p>
     </section>
 
-    <!-- TIETOA MINUSTA - Koko sarakkeen leveä teksti + kuva - Wix tyylinen lohko -->
-    <section id="tietoa" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div class="pr-8 space-y-4">
-                <h3 class="text-xl text-gray-700 uppercase tracking-widest mb-2">Filosofia</h3>
-                <h2 class="text-5xl font-light mb-4 leading-tight">
-                    Ajatonta eleganssia ja aitoja hetkiä
-                </h2>
-                <p class="text-lg text-gray-800">
-                    Olen Duke, valokuvaaja, joka on sitoutunut luomaan kuvia, jotka ovat paitsi esteettisesti kauniita, myös täynnä tunnetta ja syvyyttä. Inspiraationi tulee minimalistisesta muotoilusta. Käytössäni on tarkka studiovalo, jolla luomme tyylikkäitä, hallittuja ja voimakkaita kokonaisuuksia. Se korostaa parhaita puoliasi ja tuo esiin yksityiskohdat säästä tai vuorokaudenajasta riippumatta.
-                </p>
-                <p class="text-lg text-gray-800">
-                    Kuvauksessa keskitymme sinuun ja sinun tarinaasi, unohtaen jäykät poseeraukset. Lopputuloksena on kuvasarja, joka tuntuu aidolta ja henkilökohtaiselta.
-                </p>
-                <a href="#yhteys" class="inline-block text-black font-semibold mt-4 border-b-2 border-black pb-1 hover:border-gray-500 transition duration-300">
-                    Lue koko tarinani &rarr;
-                </a>
-            </div>
-            <!-- Laita tähän oma muotokuvasi (minä.jpg) -->
-            <div class="bg-gray-200">
-                <img src="https://placehold.co/600x800/e0ddd8/1a1a1a?text=VALOKUVAAJA+MUOTOKUVA" 
-                     alt="Kuva valokuvaajasta" 
-                     class="w-full h-auto object-cover shadow-xl">
-            </div>
+    <!-- Footer -->
+    <footer>
+        <div class="social-icons">
+            <a href="#">📘</a>
+            <a href="#">📷</a>
+            <a href="#">💼</a>
+            <a href="#">📹</a>
         </div>
-    </section>
-
-    <!-- YHTEYSTIEDOT - Musta lohko, kontrastia beigelle taustalle -->
-    <section id="yhteys" class="py-20 bg-black text-white">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-5xl font-light mb-4">Ota Yhteyttä</h2>
-            <p class="text-xl text-gray-400 mb-8">
-                Olen käytettävissä muotokuvauksiin, tapahtumiin ja kaupallisiin projekteihin.
-            </p>
-            <a href="mailto:duvinh77@gmail.com" class="inline-block bg-[#f7f3ed] text-black font-semibold py-3 px-10 rounded-none uppercase tracking-widest hover:bg-white transition duration-300 transform hover:scale-105">
-                Lähetä Sähköposti
-            </a>
-            <div class="mt-8 text-md text-gray-500 space-y-2">
-                <p>Instagram: <a href="https://www.instagram.com/kamerarepussa/" class="hover:text-white transition">@kamerarepussa</a></p>
-                <p>Puhelin: +358445770052</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- ALATUNNISTE -->
-    <footer class="bg-[#e0ddd8] py-8 border-t border-gray-300">
-        <div class="max-w-7xl mx-auto text-center text-sm text-gray-600">
-            &copy; 2025 KAMERAREPUSS A. Kaikki oikeudet pidätetään.
-        </div>
+        <p>KameraRepussa.fi © 2023 | Kaikki kuvat tekijän omaisuutta</p>
+        <p>Sivusto on alustava esittelysivu</p>
     </footer>
-
-    <!-- Image Modal (avautuu kuvaa klikatessa) -->
-    <div id="image-modal" class="modal fixed inset-0 hidden items-center justify-center p-4" onclick="closeModal()">
-        <div class="relative" onclick="event.stopPropagation()">
-            <!-- Close button -->
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-white text-4xl font-light z-50 hover:text-[#b8860b] transition">
-                &times;
-            </button>
-            <img id="modal-image-src" class="modal-image rounded-lg shadow-2xl transition duration-300" src="" alt="Zoomattu kuva">
-            <div class="text-center mt-4 p-4">
-                <p id="modal-image-caption" class="text-white text-xl font-light"></p>
-                <p id="modal-image-category" class="text-gray-400 text-sm uppercase tracking-wider"></p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const modal = document.getElementById('image-modal');
-        const modalImage = document.getElementById('modal-image-src');
-        const modalCaption = document.getElementById('modal-image-caption');
-        const modalCategory = document.getElementById('modal-image-category');
-
-        /**
-         * Opens the modal with the selected image.
-         */
-        function openModal(src, title, category) {
-            modalImage.src = src;
-            modalCaption.textContent = title;
-            modalCategory.textContent = category;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden'; // Estä sivun vieritys
-        }
-
-        /**
-         * Closes the image modal.
-         */
-        function closeModal() {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = ''; // Salli sivun vieritys
-        }
-    </script>
 </body>
 </html>
