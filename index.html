@@ -7,8 +7,7 @@
     <meta name="google-site-verification" content="nBXP2kxx9EJTUFJbB0Fp3FLYbWjAGdBv5aD3gsZ1ZaM" />
 
     <title>Kamerarepussa | Valokuvaaja Du Phan | Turku</title>
-    <meta name="description" content="Ammattivalokuvaaja Du Phan Turussa. Erikoistunut muotokuvaus-, bändi- ja tapahtumakuvaukseen.">
-
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -43,8 +42,6 @@
         .nav-links a:hover { color: var(--accent); }
 
         .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-        .section-title { text-align: center; margin-bottom: 50px; }
-        .section-title h2 { font-family: 'Montserrat', sans-serif; font-size: 32px; text-transform: uppercase; margin-bottom: 10px; }
         
         .hero {
             height: 100vh; background-size: cover; background-position: center;
@@ -60,17 +57,60 @@
             text-decoration: none; border-radius: 50px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 1px; transition: var(--transition); border: 2px solid var(--accent); cursor: pointer;
         }
-        .btn:hover { background: transparent; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 90, 95, 0.3); }
+        .btn:hover { background: transparent; transform: translateY(-3px); }
 
-        /* PORTFOLIO */
-        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-        .portfolio-item { position: relative; height: 400px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--transition); }
-        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
-        .portfolio-item:hover img { transform: scale(1.1); }
-        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; opacity: 0; transition: var(--transition); }
-        .portfolio-item:hover .overlay { opacity: 1; }
+        /* PORTFOLIO GRID JA OVERLAY TEKSTI */
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 20px; 
+        }
+        .portfolio-item { 
+            position: relative; 
+            height: 400px; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            cursor: pointer;
+        }
+        .portfolio-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.6s ease;
+        }
+        .portfolio-item:hover img { 
+            transform: scale(1.1); 
+        }
 
-        /* ABOUT SECTION */
+        /* Musta palkki ja teksti (Hävinnyt osio palautettu) */
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            display: flex;
+            align-items: flex-end;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .portfolio-overlay h3 {
+            font-family: 'Montserrat';
+            font-size: 1.2rem;
+            margin: 0;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay h3 {
+            transform: translateY(0);
+        }
+
+        /* ABOUT DUKE */
         .about-duke { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 60px; padding: 100px 5%; }
         .duke-image-container { position: relative; width: 100%; max-width: 450px; }
         .duke-image-container::after { content: ''; position: absolute; bottom: -15px; right: -15px; width: 100%; height: 100%; background-color: var(--accent); border-radius: 20px; z-index: 1; }
@@ -78,29 +118,21 @@
         .duke-text { flex: 1; min-width: 300px; max-width: 500px; }
         .duke-text h2 { font-family: 'Montserrat'; font-size: 42px; margin-bottom: 20px; }
 
-        /* INSTAGRAM BANNER */
-        .instagram-banner { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 20px; }
-        .instagram-banner i { font-size: 50px; margin-bottom: 20px; }
-        .btn-insta { background: white; color: #dc2743; border: none; }
+        /* INSTAGRAM */
+        .instagram-banner {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 20px;
+        }
 
         /* HINNASTO */
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .price-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); border: 1px solid #eee; }
-        .price-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        .price { font-size: 36px; font-weight: 700; color: var(--accent); display: block; margin: 20px 0; }
-
-        /* VIEWER */
-        #imageViewer { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; cursor: zoom-out; }
-        #fullImage { max-width: 90%; max-height: 85%; object-fit: contain; }
+        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .price-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .price { font-size: 32px; font-weight: 700; color: var(--accent); display: block; margin: 20px 0; }
 
         footer { text-align: center; padding: 60px 5%; color: #888; }
     </style>
 </head>
 <body>
-
-    <div id="imageViewer" onclick="closeImage()">
-        <img id="fullImage" src="">
-    </div>
 
     <header>
         <nav class="navbar">
@@ -117,22 +149,35 @@
     <section id="home" class="hero" style="background-image: url('Kateriina.jpg');">
         <div class="hero-content">
             <h1>VALOKUVAUS</h1>
-            <p>Pysäytettyjä hetkiä Turussa.</p>
-            <a href="#portfolio" class="btn">Portfolio</a>
+            <p>Aitoja hetkiä Turun sydämessä.</p>
+            <a href="#portfolio" class="btn">Katso työt</a>
         </div>
     </section>
 
     <section id="portfolio" class="section-padding">
         <div class="portfolio-grid">
-            <div class="portfolio-item" onclick="viewImage('emma2.jpg')"><img src="emma2.jpg" alt="Muotokuvaus"></div>
-            <div class="portfolio-item" onclick="viewImage('thestickycat.jpg')"><img src="thestickycat.jpg" alt="Bändikuvaus"></div>
-            <div class="portfolio-item" onclick="viewImage('ruokakuva.jpg')"><img src="ruokakuva.jpg" alt="Ruokakuvaus"></div>
+            <div class="portfolio-item">
+                <img src="emma2.jpg" alt="Muotokuvaus">
+                <div class="portfolio-overlay"><h3>Muotokuvaus</h3></div>
+            </div>
+            <div class="portfolio-item">
+                <img src="thestickycat.jpg" alt="Bändikuvaus">
+                <div class="portfolio-overlay"><h3>Bändikuvaus</h3></div>
+            </div>
+            <div class="portfolio-item">
+                <img src="ruokakuva.jpg" alt="Ruokakuvaus">
+                <div class="portfolio-overlay"><h3>Ruokakuvaus</h3></div>
+            </div>
+            <div class="portfolio-item">
+                <img src="juhlat.jpg" alt="Juhlakuvaus">
+                <div class="portfolio-overlay"><h3>Juhlakuvaus</h3></div>
+            </div>
         </div>
     </section>
 
     <section id="about" class="about-duke">
         <div class="duke-image-container">
-            <img src="profiilikuva.jpg" alt="Du Phan">
+            <img src="profiilikuva.jpg" alt="Duke">
         </div>
         <div class="duke-text">
             <h2>Moi, olen Duke.</h2>
@@ -142,25 +187,17 @@
     </section>
 
     <section class="instagram-banner">
-        <i class="fab fa-instagram"></i>
+        <i class="fab fa-instagram" style="font-size: 50px; margin-bottom: 20px;"></i>
         <h2>Uusimmat kuvat Instagramissa</h2>
         <p style="margin-bottom: 25px;">Seuraa matkaani @kamerarepussa</p>
-        <a href="https://instagram.com/kamerarepussa" target="_blank" class="btn btn-insta">SEURAA TÄÄLLÄ</a>
+        <a href="https://instagram.com/kamerarepussa" target="_blank" class="btn" style="background:white; color:#dc2743;">SEURAA TÄÄLLÄ</a>
     </section>
 
     <section id="prices" class="section-padding">
-        <div class="section-title"><h2>Hinnasto</h2></div>
         <div class="price-grid">
-            <div class="price-card">
-                <h3>Potretti</h3>
-                <span class="price">60€</span>
-                <p>5 käsiteltyä kuvaa</p>
-            </div>
-            <div class="price-card" style="border-color: var(--accent);">
-                <h3>Bändikuva</h3>
-                <span class="price">150€</span>
-                <p>10 käsiteltyä kuvaa</p>
-            </div>
+            <div class="price-card"><h3>Potretti</h3><span class="price">150€</span></div>
+            <div class="price-card"><h3>Bändikuva</h3><span class="price">250€</span></div>
+            <div class="price-card"><h3>Juhlakuvaus</h3><span class="price">alk. 350€</span></div>
         </div>
     </section>
 
@@ -168,31 +205,17 @@
         <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto;">
             <h2 style="text-align: center; margin-bottom: 25px;">Ota yhteyttä</h2>
             <form action="https://formspree.io/f/mqeaealg" method="POST">
-                <input type="text" name="name" placeholder="Nimi" style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required>
-                <input type="email" name="email" placeholder="Sähköposti" style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required>
-                <textarea name="message" rows="5" placeholder="Kerro toiveistasi..." style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required></textarea>
+                <input type="text" name="name" placeholder="Nimi" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;" required>
+                <input type="email" name="email" placeholder="Sähköposti" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;" required>
+                <textarea name="message" rows="5" placeholder="Viestisi..." style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #ddd; border-radius:8px;" required></textarea>
                 <button type="submit" class="btn" style="width: 100%;">LÄHETÄ</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Kamerarepussa | Du Phan | 📞 +358445770052 | 📍 Turku</p>
+        <p>&copy; 2026 Kamerarepussa | Du Phan | 📞 +358445770052 | Turku</p>
     </footer>
 
-    <script>
-        function viewImage(imgSrc) {
-            const viewer = document.getElementById('imageViewer');
-            const fullImg = document.getElementById('fullImage');
-            fullImg.src = imgSrc;
-            viewer.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-        function closeImage() {
-            const viewer = document.getElementById('imageViewer');
-            viewer.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        }
-    </script>
 </body>
 </html>
