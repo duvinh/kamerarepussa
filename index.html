@@ -180,36 +180,17 @@
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             background-color: #ddd;
-            cursor: pointer;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        /* POMPPIVA TÄYSIKOKOINEN EFEKTI - KORJATTU OIKEIN */
-        .portfolio-item:hover {
-            position: fixed !important;
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) scale(1) !important;
-            width: 90vw !important;
-            height: 90vh !important;
-            z-index: 9999;
-            border-radius: 0;
-            box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.95);
-            max-width: 1400px;
-            max-height: 90vh;
         }
         
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.5s ease;
+            transition: transform 0.5s ease;
         }
         
         .portfolio-item:hover img {
-            object-fit: contain;
-            width: 100%;
-            height: 100%;
+            transform: scale(1.05);
         }
         
         .portfolio-overlay {
@@ -228,40 +209,12 @@
         
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
-            background: rgba(0, 0, 0, 0.8);
         }
         
         .portfolio-overlay h3 {
             color: white;
             font-size: 1.5rem;
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.6);
-            border-radius: 5px;
-        }
-        
-        /* Close button for fullscreen image */
-        .close-fullscreen {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: white;
-            background: rgba(0, 0, 0, 0.7);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        
-        .portfolio-item:hover .close-fullscreen {
-            opacity: 1;
         }
         
         /* About-osio */
@@ -402,14 +355,7 @@
             color: #aaa;
         }
         
-        /* Responsiivisuus - POMPPIVAN EFEKTIN MUUTOKSET */
-        @media (max-width: 768px) {
-            .portfolio-item:hover {
-                width: 95vw !important;
-                height: 70vh !important;
-            }
-        }
-        
+        /* Responsiivisuus */
         @media (max-width: 992px) {
             .about-content {
                 flex-direction: column;
@@ -465,11 +411,6 @@
                 grid-template-columns: 1fr;
             }
             
-            .portfolio-item:hover {
-                width: 98vw !important;
-                height: 60vh !important;
-            }
-            
             .contact-form {
                 padding: 25px;
             }
@@ -499,9 +440,13 @@
     </header>
 
     <!-- Hero-osio -->
+    <!-- VAIHDA OMA KUVA TÄHÄN: -->
+    <!-- 1. Vaihda "Kateriina.jpg" oman kuvan nimeen -->
+    <!-- 2. Tai jos haluat vain värin, poista background-image ja lisää background-color -->
     <section id="home" class="hero" style="background-image: url('Kateriina.jpg'); background-color: #1a1a1a;">
         <div class="hero-content">
             <h1>VALOKUVAUS</h1>
+        
             <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan. Tervetuloa maailmaani, jossa valo ja tunnelma kohtaavat.</p>
             <a href="#portfolio" class="btn">Portfolio</a>
             <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
@@ -514,31 +459,29 @@
             <h2>Portfolio</h2>
         </div>
         <div class="portfolio-grid">
-            <!-- KUVA 1 -->
+            <!-- KUVA 1: Vaihda src="kuva1.jpg" -->
             <div class="portfolio-item">
                 <img src="emma2.jpg" alt="Muotokuvat" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Muotokuvaus</h3>
                 </div>
-                <div class="close-fullscreen" onclick="closeFullscreen(this)">✕</div>
             </div>
             
-            <!-- KUVA 2 -->
+            <!-- KUVA 2: Vaihda src="kuva2.jpg" -->
             <div class="portfolio-item">
                 <img src="thestickycat.jpg" alt="Juhlat" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Bändikuvaus</h3>
                 </div>
-                <div class="close-fullscreen" onclick="closeFullscreen(this)">✕</div>
             </div>
                
-            <!-- KUVA 3 -->
+            <!-- KUVA 3: Vaihda src="kuva3.jpg" -->
             <div class="portfolio-item">
                 <img src="ruokakuva.jpg" alt="Ruokakuvat" onerror="this.style.display='none'">
                 <div class="portfolio-overlay">
                     <h3>Ruokakuvaus</h3>
+            
                 </div>
-                <div class="close-fullscreen" onclick="closeFullscreen(this)">✕</div>
             </div>
         </div>
     </section>
@@ -547,6 +490,7 @@
     <section id="about" class="about-section">
         <div class="about-content">
             <div class="about-img">
+                <!-- OMA KUVA TÄHÄN: Vaihda src="profiilikuva.jpg" -->
                 <img src="profiilikuva.jpg" alt="Du Phan" onerror="this.style.backgroundColor='#ddd'">
             </div>
             <div class="about-text">
@@ -586,6 +530,7 @@
             </form>
             
             <div class="social-links">
+                <!-- Vain Instagram-jäljellä -->
                 <a href="https://www.instagram.com/kamerarepussa/" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
@@ -595,7 +540,8 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">Kamerarepussa</div>
+        <div class="footer-logo"></div>
+    
         <p class="copyright">&copy; <span id="currentYear"></span> Kamerarepussa. Kaikki oikeudet pidätetään.</p>
     </footer>
 
@@ -624,67 +570,21 @@
         // Lomakkeen lähetyksen käsittely
         const form = document.querySelector('form');
         form.addEventListener('submit', function(e) {
+            // Formspree käsittelee lomakkeen
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Lähetetään...';
             submitBtn.disabled = true;
             
+            // Palautetaan nappi normaalitilaan 3 sekunnin kuluttua
             setTimeout(() => {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
+                
+                // Näytetään onnistuneen lähetyksen ilmoitus
                 alert('Kiitos viestistäsi! Palaan sinulle mahdollisimman pian.');
                 form.reset();
             }, 3000);
-        });
-        
-        // Sulje täysikokoinen kuva
-        function closeFullscreen(element) {
-            const portfolioItem = element.parentElement;
-            portfolioItem.style.position = '';
-            portfolioItem.style.top = '';
-            portfolioItem.style.left = '';
-            portfolioItem.style.transform = '';
-            portfolioItem.style.width = '';
-            portfolioItem.style.height = '';
-            portfolioItem.style.zIndex = '';
-            portfolioItem.style.boxShadow = '';
-            
-            // Estä hiiren poistumisen aiheuttama uusi hover
-            portfolioItem.classList.add('no-hover');
-            setTimeout(() => {
-                portfolioItem.classList.remove('no-hover');
-            }, 100);
-        }
-        
-        // Lisää "no-hover" luokka CSS:ään
-        const style = document.createElement('style');
-        style.textContent = `
-            .portfolio-item.no-hover:hover {
-                position: relative !important;
-                top: auto !important;
-                left: auto !important;
-                transform: none !important;
-                width: auto !important;
-                height: 300px !important;
-                z-index: auto !important;
-                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
-                border-radius: 8px !important;
-            }
-            .portfolio-item.no-hover:hover img {
-                object-fit: cover !important;
-            }
-        `;
-        document.head.appendChild(style);
-        
-        // Sulje täysikokoinen kuva myös ESC-näppäimellä
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.portfolio-item').forEach(item => {
-                    if (item.style.position === 'fixed') {
-                        closeFullscreen(item.querySelector('.close-fullscreen'));
-                    }
-                });
-            }
         });
     </script>
 </body>
