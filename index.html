@@ -6,586 +6,216 @@
     <title>Kamerarepussa - Valokuvaus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
             background-color: #f9f9f9;
+            color: #333;
         }
-        
-        h1, h2, h3, h4 {
+
+        h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
         }
-        
-        /* Header ja navigaatio */
+
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background: #fff;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             padding: 20px 5%;
             max-width: 1400px;
-            margin: 0 auto;
+            margin: auto;
         }
-        
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            color: #333;
-            text-decoration: none;
-        }
-        
-        .logo span {
-            color: #ff5a5f;
-        }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
             text-decoration: none;
             color: #333;
             font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s;
         }
-        
-        .nav-links a:hover {
-            color: #ff5a5f;
-        }
-        
-        /* Hero-osio */
+
         .hero {
             height: 100vh;
-            background-size: cover;
-            background-position: center;
+            margin-top: 70px;
+            background: url('Kateriina.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: #fff;
             text-align: center;
-            color: white;
-            margin-top: 70px;
         }
-        
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        .hero-content h2 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            letter-spacing: 5px;
-        }
-        
-        .hero-content p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
-        }
-        
+
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background-color: #ff5a5f;
-            color: white;
-            text-decoration: none;
+            background: #ff5a5f;
+            color: #fff;
             border-radius: 30px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            border: 2px solid #ff5a5f;
+            text-decoration: none;
+            margin: 10px;
         }
-        
-        .btn:hover {
-            background-color: transparent;
-            color: #ff5a5f;
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid white;
-        }
-        
-        .btn-outline:hover {
-            background-color: white;
-            color: #333;
-        }
-        
-        /* Portfolio-osio */
-        .section-title {
-            text-align: center;
-            margin: 80px 0 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: #333;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            position: absolute;
-            width: 70px;
-            height: 3px;
-            background-color: #ff5a5f;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
+
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
             max-width: 1200px;
-            margin: 0 auto 80px;
+            margin: 80px auto;
             padding: 0 20px;
         }
-        
+
         .portfolio-item {
             height: 300px;
             overflow: hidden;
             border-radius: 8px;
             position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            background-color: #ddd;
+            cursor: zoom-in;
         }
-        
+
         .portfolio-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
-        
+
         .portfolio-item:hover img {
             transform: scale(1.05);
         }
-        
+
         .portfolio-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            inset: 0;
+            background: rgba(0,0,0,0.7);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
         }
-        
+
         .portfolio-item:hover .portfolio-overlay {
             opacity: 1;
         }
-        
+
         .portfolio-overlay h3 {
-            color: white;
-            font-size: 1.5rem;
-            text-align: center;
+            color: #fff;
         }
-        
-        /* About-osio */
-        .about-section {
-            background-color: #fff;
-            padding: 80px 5%;
-        }
-        
-        .about-content {
-            display: flex;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 50px;
-        }
-        
-        .about-img {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            background-color: #ddd;
-            height: 500px;
-        }
-        
-        .about-img img {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-        
-        .about-text {
-            flex: 1;
-        }
-        
-        .about-text h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .about-text p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-        
-        /* Contact-osio */
-        .contact-section {
-            padding: 80px 5%;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 25px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Open Sans', sans-serif;
-            font-size: 16px;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 40px;
-        }
-        
-        .social-icon {
-            display: flex;
+
+        /* ===== LIGHTBOX ===== */
+        #lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            display: none;
             align-items: center;
             justify-content: center;
-            width: 50px;
-            height: 50px;
-            background-color: #333;
-            color: white;
-            border-radius: 50%;
-            margin: 0 10px;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
+            z-index: 10000;
+            cursor: pointer;
         }
-        
-        .social-icon:hover {
-            background-color: #ff5a5f;
-            transform: translateY(-5px);
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 6px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
-        
-        /* Footer */
+
         footer {
-            background-color: #222;
-            color: #ddd;
+            background: #222;
+            color: #aaa;
             text-align: center;
             padding: 40px 20px;
-            margin-top: 80px;
-        }
-        
-        .footer-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo span {
-            color: #ff5a5f;
-        }
-        
-        .copyright {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        /* Responsiivisuus */
-        @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 15px 5%;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav-links li {
-                margin: 5px 15px;
-            }
-            
-            .hero {
-                margin-top: 120px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form {
-                padding: 25px;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
         }
     </style>
 </head>
+
 <body>
-    <!-- Header ja navigaatio -->
-    <header>
-        <nav class="navbar">
-            <a href="#" class="logo">Kamerarepussa</a>
-            <ul class="nav-links">
-                <li><a href="#home">Etusivu</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">Minusta</a></li>
-                <li><a href="#contact">Ota yhteyttä</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero-osio -->
-    <!-- VAIHDA OMA KUVA TÄHÄN: -->
-    <!-- 1. Vaihda "Kateriina.jpg" oman kuvan nimeen -->
-    <!-- 2. Tai jos haluat vain värin, poista background-image ja lisää background-color -->
-    <section id="home" class="hero" style="background-image: url('Kateriina.jpg'); background-color: #1a1a1a;">
-        <div class="hero-content">
-            <h1>VALOKUVAUS</h1>
-        
-            <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan. Tervetuloa maailmaani, jossa valo ja tunnelma kohtaavat.</p>
-            <a href="#portfolio" class="btn">Portfolio</a>
-            <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
-        </div>
-    </section>
+<header>
+    <nav class="navbar">
+        <strong>Kamerarepussa</strong>
+        <ul class="nav-links">
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Yhteys</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <!-- Portfolio-osio -->
-    <section id="portfolio">
-        <div class="section-title">
-            <h2>Portfolio</h2>
-        </div>
-        <div class="portfolio-grid">
-            <!-- KUVA 1: Vaihda src="kuva1.jpg" -->
-            <div class="portfolio-item">
-                <img src="emma2.jpg" alt="Muotokuvat" onerror="this.style.display='none'">
-                <div class="portfolio-overlay">
-                    <h3>Muotokuvaus</h3>
-                </div>
-            </div>
-            
-            <!-- KUVA 2: Vaihda src="kuva2.jpg" -->
-            <div class="portfolio-item">
-                <img src="thestickycat.jpg" alt="Juhlat" onerror="this.style.display='none'">
-                <div class="portfolio-overlay">
-                    <h3>Bändikuvaus</h3>
-                </div>
-            </div>
-               
-            <!-- KUVA 3: Vaihda src="kuva3.jpg" -->
-            <div class="portfolio-item">
-                <img src="ruokakuva.jpg" alt="Ruokakuvat" onerror="this.style.display='none'">
-                <div class="portfolio-overlay">
-                    <h3>Ruokakuvaus</h3>
-            
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="hero">
+    <div>
+        <h1>VALOKUVAUS</h1>
+        <p>Hetkiä, tarinoita ja tunnelmaa</p>
+        <a href="#portfolio" class="btn">Portfolio</a>
+    </div>
+</section>
 
-    <!-- About-osio -->
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <div class="about-img">
-                <!-- OMA KUVA TÄHÄN: Vaihda src="profiilikuva.jpg" -->
-                <img src="profiilikuva.jpg" alt="Du Phan" onerror="this.style.backgroundColor='#ddd'">
-            </div>
-            <div class="about-text">
-                <h2>Minusta</h2>
-                <p>Olen Du (Duke) Phan, intohimoinen valokuvaaja, joka on erikoistunut maisema- ja portaittikuviin. Aloitin valokuvauksen jo nuorena, ja se on ollut minun elämäni suurin intohimo siitä lähtien.</p>
-                <p>Työskentelen sekä digitaalisilla että filmikameroilla ja pidän siitä, että kuvat kertovat tarinoita. Jokainen kuva on uniikki hetki, joka on jäädytettävä ajassa.</p>
-                <p>Tavoitteenani on aina luoda kuvia, jotka herättävät tunteita ja inspiroivat.</p>
-                <a href="#contact" class="btn">Ota yhteyttä</a>
-            </div>
+<section id="portfolio">
+    <div class="portfolio-grid">
+        <div class="portfolio-item">
+            <img src="emma2.jpg" alt="">
+            <div class="portfolio-overlay"><h3>Muotokuvaus</h3></div>
         </div>
-    </section>
-
-    <!-- Contact-osio -->
-    <section id="contact" class="contact-section">
-        <div class="section-title">
-            <h2>Ota yhteyttä</h2>
+        <div class="portfolio-item">
+            <img src="thestickycat.jpg" alt="">
+            <div class="portfolio-overlay"><h3>Bändikuvaus</h3></div>
         </div>
-        <div class="contact-form">
-            <form action="https://formspree.io/f/mqeaealg" method="POST">
-                <div class="form-group">
-                    <label for="name">Nimi</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Sähköposti</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Aihe</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Viesti</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <button type="submit" class="btn" style="width: 100%;">Lähetä viesti</button>
-            </form>
-            
-            <div class="social-links">
-                <!-- Vain Instagram-jäljellä -->
-                <a href="https://www.instagram.com/kamerarepussa/" class="social-icon" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
+        <div class="portfolio-item">
+            <img src="ruokakuva.jpg" alt="">
+            <div class="portfolio-overlay"><h3>Ruokakuvaus</h3></div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-logo"></div>
-    
-        <p class="copyright">&copy; <span id="currentYear"></span> Kamerarepussa. Kaikki oikeudet pidätetään.</p>
-    </footer>
+<!-- LIGHTBOX -->
+<div id="lightbox">
+    <img id="lightbox-img">
+</div>
 
-    <script>
-        // Aseta nykyinen vuosi footerissa
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Pehmeä scrollaus navigointilinkkeihin
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+<footer>
+    &copy; <span id="year"></span> Kamerarepussa
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const images = document.querySelectorAll('.portfolio-item img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    images.forEach(img => {
+        img.addEventListener('click', () => {
+            lightboxImg.src = img.src;
+            lightbox.style.display = 'flex';
         });
-        
-        // Lomakkeen lähetyksen käsittely
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            // Formspree käsittelee lomakkeen
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Lähetetään...';
-            submitBtn.disabled = true;
-            
-            // Palautetaan nappi normaalitilaan 3 sekunnin kuluttua
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Näytetään onnistuneen lähetyksen ilmoitus
-                alert('Kiitos viestistäsi! Palaan sinulle mahdollisimman pian.');
-                form.reset();
-            }, 3000);
-        });
-    </script>
+    });
+
+    lightbox.addEventListener('click', () => {
+        lightbox.style.display = 'none';
+    });
+</script>
+
 </body>
 </html>
