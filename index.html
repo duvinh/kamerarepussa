@@ -97,13 +97,6 @@
             letter-spacing: 2px;
         }
         
-        .hero-content h2 {
-            font-size: 1.8rem;
-            font-weight: 300;
-            margin-bottom: 30px;
-            letter-spacing: 5px;
-        }
-        
         .hero-content p {
             font-size: 1.2rem;
             max-width: 700px;
@@ -122,18 +115,19 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             border: 2px solid #ff5a5f;
+            cursor: pointer;
         }
         
         .btn:hover {
             background-color: transparent;
             color: #ff5a5f;
         }
-        
+
         .btn-outline {
             background-color: transparent;
             border: 2px solid white;
         }
-        
+
         .btn-outline:hover {
             background-color: white;
             color: #333;
@@ -180,6 +174,7 @@
             position: relative;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             background-color: #ddd;
+            cursor: pointer; /* Lisätty osoittamaan että klikattava */
         }
         
         .portfolio-item img {
@@ -199,7 +194,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -216,6 +211,35 @@
             font-size: 1.5rem;
             text-align: center;
         }
+
+        /* --- UUSI OSA: KOKO RUUDUN KUVA (MODAL) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 3px solid white;
+            border-radius: 4px;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        /* -------------------------------------- */
         
         /* About-osio */
         .about-section {
@@ -337,18 +361,6 @@
             margin-top: 80px;
         }
         
-        .footer-logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            color: white;
-            margin-bottom: 20px;
-        }
-        
-        .footer-logo span {
-            color: #ff5a5f;
-        }
-        
         .copyright {
             margin-top: 20px;
             font-size: 0.9rem;
@@ -357,76 +369,17 @@
         
         /* Responsiivisuus */
         @media (max-width: 992px) {
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.5rem;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                padding: 15px 5%;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            .nav-links {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-            
-            .nav-links li {
-                margin: 5px 15px;
-            }
-            
-            .hero {
-                margin-top: 120px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero-content h2 {
-                font-size: 1.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-form {
-                padding: 25px;
-            }
-            
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
+            .about-content { flex-direction: column; }
+            .hero-content h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
 <body>
-    <!-- Header ja navigaatio -->
+
+    <div id="imageModal" class="modal">
+        <img id="modalImg" src="" alt="Suurennettu kuva">
+    </div>
+
     <header>
         <nav class="navbar">
             <a href="#" class="logo">Kamerarepussa</a>
@@ -439,71 +392,56 @@
         </nav>
     </header>
 
-    <!-- Hero-osio -->
-    <!-- VAIHDA OMA KUVA TÄHÄN: -->
-    <!-- 1. Vaihda "Kateriina.jpg" oman kuvan nimeen -->
-    <!-- 2. Tai jos haluat vain värin, poista background-image ja lisää background-color -->
     <section id="home" class="hero" style="background-image: url('Kateriina.jpg'); background-color: #1a1a1a;">
         <div class="hero-content">
             <h1>VALOKUVAUS</h1>
-        
-            <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan. Tervetuloa maailmaani, jossa valo ja tunnelma kohtaavat.</p>
+            <p>Luonnosta, ihmisistä ja hetkistä, jotka kertovat tarinan.</p>
             <a href="#portfolio" class="btn">Portfolio</a>
             <a href="#contact" class="btn btn-outline">Ota yhteyttä</a>
         </div>
     </section>
 
-    <!-- Portfolio-osio -->
     <section id="portfolio">
         <div class="section-title">
             <h2>Portfolio</h2>
         </div>
         <div class="portfolio-grid">
-            <!-- KUVA 1: Vaihda src="kuva1.jpg" -->
-            <div class="portfolio-item">
-                <img src="emma2.jpg" alt="Muotokuvat" onerror="this.style.display='none'">
+            <div class="portfolio-item" onclick="openModal(this)">
+                <img src="emma2.jpg" alt="Muotokuvaus">
                 <div class="portfolio-overlay">
                     <h3>Muotokuvaus</h3>
                 </div>
             </div>
             
-            <!-- KUVA 2: Vaihda src="kuva2.jpg" -->
-            <div class="portfolio-item">
-                <img src="thestickycat.jpg" alt="Juhlat" onerror="this.style.display='none'">
+            <div class="portfolio-item" onclick="openModal(this)">
+                <img src="thestickycat.jpg" alt="Bändikuvaus">
                 <div class="portfolio-overlay">
                     <h3>Bändikuvaus</h3>
                 </div>
             </div>
                
-            <!-- KUVA 3: Vaihda src="kuva3.jpg" -->
-            <div class="portfolio-item">
-                <img src="ruokakuva.jpg" alt="Ruokakuvat" onerror="this.style.display='none'">
+            <div class="portfolio-item" onclick="openModal(this)">
+                <img src="ruokakuva.jpg" alt="Ruokakuvaus">
                 <div class="portfolio-overlay">
                     <h3>Ruokakuvaus</h3>
-            
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About-osio -->
     <section id="about" class="about-section">
         <div class="about-content">
             <div class="about-img">
-                <!-- OMA KUVA TÄHÄN: Vaihda src="profiilikuva.jpg" -->
-                <img src="profiilikuva.jpg" alt="Du Phan" onerror="this.style.backgroundColor='#ddd'">
+                <img src="profiilikuva.jpg" alt="Du Phan">
             </div>
             <div class="about-text">
                 <h2>Minusta</h2>
-                <p>Olen Du (Duke) Phan, intohimoinen valokuvaaja, joka on erikoistunut maisema- ja portaittikuviin. Aloitin valokuvauksen jo nuorena, ja se on ollut minun elämäni suurin intohimo siitä lähtien.</p>
-                <p>Työskentelen sekä digitaalisilla että filmikameroilla ja pidän siitä, että kuvat kertovat tarinoita. Jokainen kuva on uniikki hetki, joka on jäädytettävä ajassa.</p>
-                <p>Tavoitteenani on aina luoda kuvia, jotka herättävät tunteita ja inspiroivat.</p>
+                <p>Olen Du (Duke) Phan, intohimoinen valokuvaaja...</p>
                 <a href="#contact" class="btn">Ota yhteyttä</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact-osio -->
     <section id="contact" class="contact-section">
         <div class="section-title">
             <h2>Ota yhteyttä</h2>
@@ -511,26 +449,20 @@
         <div class="contact-form">
             <form action="https://formspree.io/f/mqeaealg" method="POST">
                 <div class="form-group">
-                    <label for="name">Nimi</label>
-                    <input type="text" id="name" name="name" required>
+                    <label>Nimi</label>
+                    <input type="text" name="name" required>
                 </div>
                 <div class="form-group">
-                    <label for="email">Sähköposti</label>
-                    <input type="email" id="email" name="email" required>
+                    <label>Sähköposti</label>
+                    <input type="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="subject">Aihe</label>
-                    <input type="text" id="subject" name="subject" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Viesti</label>
-                    <textarea id="message" name="message" required></textarea>
+                    <label>Viesti</label>
+                    <textarea name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn" style="width: 100%;">Lähetä viesti</button>
             </form>
-            
             <div class="social-links">
-                <!-- Vain Instagram-jäljellä -->
                 <a href="https://www.instagram.com/kamerarepussa/" class="social-icon" target="_blank">
                     <i class="fab fa-instagram"></i>
                 </a>
@@ -538,26 +470,36 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-logo"></div>
-    
-        <p class="copyright">&copy; <span id="currentYear"></span> Kamerarepussa. Kaikki oikeudet pidätetään.</p>
+        <p class="copyright">&copy; <span id="currentYear"></span> Kamerarepussa.</p>
     </footer>
 
     <script>
-        // Aseta nykyinen vuosi footerissa
+        // Nykyinen vuosi
         document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Pehmeä scrollaus navigointilinkkeihin
+
+        // --- UUSI OSA: LIGHTBOX LOGIIKKA ---
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+
+        function openModal(element) {
+            const imgSrc = element.querySelector('img').src;
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+            document.body.style.overflow = "hidden"; // Estää taustan skrollauksen
+        }
+
+        modal.onclick = function() {
+            modal.style.display = "none";
+            document.body.style.overflow = "auto"; // Palauttaa skrollauksen
+        }
+        // -----------------------------------
+
+        // Pehmeä skrollaus
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
+                const targetElement = document.querySelector(this.getAttribute('href'));
                 if(targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
@@ -565,26 +507,6 @@
                     });
                 }
             });
-        });
-        
-        // Lomakkeen lähetyksen käsittely
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(e) {
-            // Formspree käsittelee lomakkeen
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Lähetetään...';
-            submitBtn.disabled = true;
-            
-            // Palautetaan nappi normaalitilaan 3 sekunnin kuluttua
-            setTimeout(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                
-                // Näytetään onnistuneen lähetyksen ilmoitus
-                alert('Kiitos viestistäsi! Palaan sinulle mahdollisimman pian.');
-                form.reset();
-            }, 3000);
         });
     </script>
 </body>
