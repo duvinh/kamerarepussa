@@ -5,261 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamerarepussa - Valokuvaus</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* --- PERUSTYYLIT JA VÄRIT --- */
+        :root {
+            --accent: #ff5a5f; /* Punainen korostusväri */
+            --dark: #1a1a1a;
+            --light: #f9f9f9;
+            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background-color: var(--light); color: #333; overflow-x: hidden; }
         
-        body {
-            font-family: 'Open Sans', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        
+        /* --- NAVIGAATIO --- */
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
         }
         
         .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 5%; max-width: 1400px; margin: 0 auto;
         }
         
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 28px;
-            color: #333;
-            text-decoration: none;
-        }
+        .logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: var(--dark); text-decoration: none; }
+        .logo span { color: var(--accent); }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 25px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 14px; text-transform: uppercase; transition: var(--transition); }
+        .nav-links a:hover { color: var(--accent); }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li { margin-left: 30px; }
-        .nav-links a { text-decoration: none; color: #333; font-weight: 500; }
-
-        /* Hero-osio */
+        /* --- HERO --- */
         .hero {
-            height: 100vh;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            margin-top: 70px;
+            height: 100vh; background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            color: white; position: relative;
         }
-        
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
+        .hero-content { position: relative; z-index: 1; padding: 20px; }
+        .hero-content h1 { font-family: 'Montserrat', sans-serif; font-size: clamp(2rem, 8vw, 4rem); letter-spacing: 5px; margin-bottom: 15px; }
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #ff5a5f;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            margin-top: 20px;
+            display: inline-block; padding: 15px 35px; background: var(--accent); color: white;
+            text-decoration: none; border-radius: 50px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 1px; transition: var(--transition); border: 2px solid var(--accent);
         }
+        .btn:hover { background: transparent; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 90, 95, 0.3); }
 
-        /* Portfolio Grid */
-        .section-title { text-align: center; margin: 80px 0 50px; }
+        /* --- PORTFOLIO --- */
+        .section-padding { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Montserrat', sans-serif; font-size: 32px; margin-bottom: 10px; text-transform: uppercase; }
+        
         .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto 80px;
-            padding: 0 20px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
         }
         
         .portfolio-item {
-            height: 300px;
-            overflow: hidden;
-            border-radius: 8px;
-            position: relative;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative; height: 450px; border-radius: 15px; overflow: hidden;
+            cursor: pointer; background: #eee; transition: var(--transition);
         }
         
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
+        /* Tämä tekee "pomppaus"-efektin */
+        .portfolio-item:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+        
+        .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); }
+        .portfolio-item:hover img { transform: scale(1.1); }
+
+        /* Teksti kuvan päällä */
+        .overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white; opacity: 0; transition: var(--transition);
         }
+        .portfolio-item:hover .overlay { opacity: 1; }
 
-        .portfolio-item:hover img { transform: scale(1.05); }
-
-        /* --- TÄYSKOKOINEN KUVA (MODAL) TYYLIT --- */
+        /* --- VIEWER (MODAL) --- */
         #imageViewer {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
+            display: none; position: fixed; z-index: 2000; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.95);
+            justify-content: center; align-items: center; cursor: zoom-out;
+            animation: fadeIn 0.3s ease;
         }
-
-        #fullImage {
-            max-width: 95%;
-            max-height: 95%;
-            object-fit: contain;
-            box-shadow: 0 0 20px rgba(255,255,255,0.2);
-            transition: transform 0.3s ease;
+        #fullImage { 
+            max-width: 90%; max-height: 85%; object-fit: contain; 
+            border-radius: 5px; transform: scale(0.9); transition: 0.3s ease;
         }
+        #imageViewer.active #fullImage { transform: scale(1); }
 
-        .close-viewer {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            font-weight: bold;
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* --- ABOUT & CONTACT --- */
+        .about-section { background: white; border-radius: 30px; margin: 0 20px; }
+        .contact-form { background: var(--dark); color: white; padding: 50px; border-radius: 20px; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 15px; background: #222; border: 1px solid #333; 
+            color: white; margin-bottom: 20px; border-radius: 8px;
         }
-        /* ---------------------------------------- */
-
-        .about-section { background: white; padding: 80px 5%; }
-        .about-content { display: flex; max-width: 1200px; margin: 0 auto; gap: 50px; align-items: center; }
-        .about-img { flex: 1; height: 500px; border-radius: 10px; overflow: hidden; }
-        .about-img img { width: 100%; height: 100%; object-fit: cover; }
-        .about-text { flex: 1; }
-
-        .contact-section { padding: 80px 5%; max-width: 800px; margin: 0 auto; }
-        .contact-form { background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.1); }
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; }
         
-        footer { background: #222; color: #aaa; text-align: center; padding: 40px; }
+        footer { text-align: center; padding: 50px; color: #888; font-size: 14px; }
     </style>
 </head>
 <body>
 
     <div id="imageViewer" onclick="closeImage()">
-        <span class="close-viewer">&times;</span>
         <img id="fullImage" src="">
     </div>
 
     <header>
         <nav class="navbar">
-            <a href="#" class="logo">Kamerarepussa</a>
+            <a href="#" class="logo">KAMERA<span>REPUSSA</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Etusivu</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#home">Alku</a></li>
+                <li><a href="#portfolio">Työt</a></li>
                 <li><a href="#about">Minusta</a></li>
-                <li><a href="#contact">Ota yhteyttä</a></li>
+                <li><a href="#contact">Yhteys</a></li>
             </ul>
         </nav>
     </header>
 
-    <section id="home" class="hero" style="background-image: url('Kateriina.jpg'); background-color: #1a1a1a;">
+    <section id="home" class="hero" style="background-image: url('Kateriina.jpg');">
         <div class="hero-content">
             <h1>VALOKUVAUS</h1>
-            <p>Luonnosta, ihmisistä ja hetkistä. Tervetuloa.</p>
-            <a href="#portfolio" class="btn">Portfolio</a>
+            <p>Pysäytettyjä hetkiä, aitoja tunteita.</p>
+            <a href="#portfolio" class="btn">Tutustu portfolioon</a>
         </div>
     </section>
 
-    <section id="portfolio">
+    <section id="portfolio" class="section-padding">
         <div class="section-title">
             <h2>Portfolio</h2>
-            <p>Klikkaa kuvaa nähdäksesi sen täysikokoisena</p>
+            <div style="width: 50px; height: 3px; background: var(--accent); margin: 10px auto;"></div>
         </div>
+        
         <div class="portfolio-grid">
             <div class="portfolio-item" onclick="viewImage('emma2.jpg')">
                 <img src="emma2.jpg" alt="Muotokuva">
+                <div class="overlay"><h3>Muotokuvaus</h3></div>
             </div>
             
             <div class="portfolio-item" onclick="viewImage('thestickycat.jpg')">
                 <img src="thestickycat.jpg" alt="Bändikuva">
+                <div class="overlay"><h3>Bändikuvaus</h3></div>
             </div>
                
             <div class="portfolio-item" onclick="viewImage('ruokakuva.jpg')">
                 <img src="ruokakuva.jpg" alt="Ruokakuva">
+                <div class="overlay"><h3>Ruokakuvaus</h3></div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about-section">
-        <div class="about-content">
-            <div class="about-img">
-                <img src="profiilikuva.jpg" alt="Du Phan">
+    <section id="about" class="section-padding about-section">
+        <div class="about-content" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center;">
+            <div style="flex: 1; min-width: 300px;">
+                <img src="profiilikuva.jpg" style="width: 100%; border-radius: 20px; box-shadow: 20px 20px 0 var(--accent);" alt="Du Phan">
             </div>
-            <div class="about-text">
-                <h2>Minusta</h2>
-                <p>Olen Du (Duke) Phan, intohimoinen valokuvaaja.</p>
-                <a href="#contact" class="btn">Ota yhteyttä</a>
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="font-family: 'Montserrat'; font-size: 40px; margin-bottom: 20px;">Moi, olen Duke.</h2>
+                <p style="font-size: 18px; color: #666; margin-bottom: 20px;">Olen erikoistunut vangitsemaan hetkiä, joita ei voi kokea kahdesti. Rakastan valon leikkiä ja aitoja ilmeitä.</p>
+                <a href="#contact" class="btn">Pyydä tarjous</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="contact" class="section-padding">
         <div class="contact-form">
-            <h2>Ota yhteyttä</h2>
+            <h2 style="margin-bottom: 30px; font-family: 'Montserrat';">Suunnitellaanko kuvaukset?</h2>
             <form action="https://formspree.io/f/mqeaealg" method="POST">
-                <div class="form-group"><input type="text" name="name" placeholder="Nimesi" required></div>
-                <div class="form-group"><input type="email" name="email" placeholder="Sähköpostisi" required></div>
-                <div class="form-group"><textarea name="message" placeholder="Viestisi" required></textarea></div>
-                <button type="submit" class="btn" style="width:100%">Lähetä</button>
+                <div class="form-group"><input type="text" name="name" placeholder="Nimi" required></div>
+                <div class="form-group"><input type="email" name="email" placeholder="Sähköposti" required></div>
+                <div class="form-group"><textarea name="message" rows="5" placeholder="Kerro toiveistasi..." required></textarea></div>
+                <button type="submit" class="btn" style="width: 100%;">Lähetä viesti</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Kamerarepussa. Kaikki oikeudet pidätetään.</p>
+        <p>&copy; 2024 Kamerarepussa | Valokuvaaja Du Phan</p>
+        <div style="margin-top: 20px; font-size: 20px;">
+            <a href="https://www.instagram.com/kamerarepussa/" style="color: var(--dark); margin: 0 10px;"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
 
     <script>
-        // Funktio joka avaa kuvan
         function viewImage(imgSrc) {
             const viewer = document.getElementById('imageViewer');
             const fullImg = document.getElementById('fullImage');
-            
             fullImg.src = imgSrc;
             viewer.style.display = 'flex';
-            // Estetään taustan skrollaus kun kuva on auki
+            setTimeout(() => viewer.classList.add('active'), 10);
             document.body.style.overflow = 'hidden';
         }
 
-        // Funktio joka sulkee kuvan
         function closeImage() {
             const viewer = document.getElementById('imageViewer');
-            viewer.style.display = 'none';
-            // Palautetaan skrollaus
+            viewer.classList.remove('active');
+            setTimeout(() => viewer.style.display = 'none', 300);
             document.body.style.overflow = 'auto';
         }
 
-        // Pehmeä skrollaus linkeille
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                    window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
                 }
             });
         });
