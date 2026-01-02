@@ -7,8 +7,8 @@
     <meta name="google-site-verification" content="nBXP2kxx9EJTUFJbB0Fp3FLYbWjAGdBv5aD3gsZ1ZaM" />
 
     <title>Kamerarepussa | Valokuvaaja Du Phan | Turku</title>
-    <meta name="description" content="Kamerarepussa - Ammattivalokuvaaja Du Phan Turussa. Muotokuvaus, bändikuvaus ja tapahtumat.">
-    
+    <meta name="description" content="Ammattivalokuvaaja Du Phan Turussa. Erikoistunut muotokuvaus-, bändi- ja tapahtumakuvaukseen.">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
@@ -23,17 +23,18 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Open Sans', sans-serif; background-color: var(--light); color: #333; overflow-x: hidden; line-height: 1.6; }
         
-        /* NAVIGAATIO */
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
             position: fixed; width: 100%; top: 0; z-index: 1000;
         }
+        
         .navbar {
             display: flex; justify-content: space-between; align-items: center;
             padding: 15px 5%; max-width: 1400px; margin: 0 auto;
         }
+        
         .logo { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 24px; color: var(--dark); text-decoration: none; }
         .logo span { color: var(--accent); }
         .nav-links { display: flex; list-style: none; }
@@ -42,10 +43,11 @@
         .nav-links a:hover { color: var(--accent); }
 
         .section-padding { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
-
-        /* HERO */
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-family: 'Montserrat', sans-serif; font-size: 32px; text-transform: uppercase; margin-bottom: 10px; }
+        
         .hero {
-            height: 80vh; background-size: cover; background-position: center;
+            height: 100vh; background-size: cover; background-position: center;
             display: flex; align-items: center; justify-content: center; text-align: center;
             color: white; position: relative;
         }
@@ -58,53 +60,40 @@
             text-decoration: none; border-radius: 50px; font-weight: 700; text-transform: uppercase;
             letter-spacing: 1px; transition: var(--transition); border: 2px solid var(--accent); cursor: pointer;
         }
-        .btn:hover { background: transparent; color: var(--accent); transform: translateY(-3px); }
+        .btn:hover { background: transparent; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(255, 90, 95, 0.3); }
 
         /* PORTFOLIO */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
         .portfolio-item { position: relative; height: 400px; border-radius: 12px; overflow: hidden; cursor: pointer; transition: var(--transition); }
         .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
         .portfolio-item:hover img { transform: scale(1.1); }
+        .overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px 20px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: white; opacity: 0; transition: var(--transition); }
+        .portfolio-item:hover .overlay { opacity: 1; }
 
-        /* --- DUKE ESITTELY (PALAUTETTU) --- */
-        .about-duke {
-            display: flex; align-items: center; justify-content: center;
-            flex-wrap: wrap; gap: 60px; padding: 100px 5%;
-        }
-        .duke-image-container {
-            position: relative; width: 100%; max-width: 450px;
-        }
-        /* Punainen taustalaatikko kuvan alla */
-        .duke-image-container::after {
-            content: ''; position: absolute; bottom: -15px; right: -15px;
-            width: 100%; height: 100%; background-color: var(--accent);
-            border-radius: 20px; z-index: 1;
-        }
-        .duke-image-container img {
-            position: relative; width: 100%; border-radius: 20px; z-index: 2; display: block;
-        }
+        /* ABOUT SECTION */
+        .about-duke { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 60px; padding: 100px 5%; }
+        .duke-image-container { position: relative; width: 100%; max-width: 450px; }
+        .duke-image-container::after { content: ''; position: absolute; bottom: -15px; right: -15px; width: 100%; height: 100%; background-color: var(--accent); border-radius: 20px; z-index: 1; }
+        .duke-image-container img { position: relative; width: 100%; border-radius: 20px; z-index: 2; display: block; }
         .duke-text { flex: 1; min-width: 300px; max-width: 500px; }
-        .duke-text h2 { font-family: 'Montserrat'; font-size: 42px; margin-bottom: 20px; color: var(--dark); }
-        .duke-text p { font-size: 18px; color: #555; margin-bottom: 30px; }
+        .duke-text h2 { font-family: 'Montserrat'; font-size: 42px; margin-bottom: 20px; }
 
-        /* INSTAGRAM BANNERI */
-        .instagram-banner {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 20px;
-        }
+        /* INSTAGRAM BANNER */
+        .instagram-banner { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; text-align: center; padding: 60px 5%; border-radius: 30px; margin: 40px 20px; }
         .instagram-banner i { font-size: 50px; margin-bottom: 20px; }
         .btn-insta { background: white; color: #dc2743; border: none; }
 
         /* HINNASTO */
         .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .price-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .price { font-size: 32px; font-weight: 700; color: var(--accent); display: block; margin: 15px 0; }
+        .price-card { background: white; padding: 40px; border-radius: 20px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); border: 1px solid #eee; }
+        .price-card:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .price { font-size: 36px; font-weight: 700; color: var(--accent); display: block; margin: 20px 0; }
 
         /* VIEWER */
-        #imageViewer { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; }
+        #imageViewer { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; cursor: zoom-out; }
         #fullImage { max-width: 90%; max-height: 85%; object-fit: contain; }
 
-        footer { text-align: center; padding: 60px 5%; color: #888; background: #fff; }
+        footer { text-align: center; padding: 60px 5%; color: #888; }
     </style>
 </head>
 <body>
@@ -128,8 +117,8 @@
     <section id="home" class="hero" style="background-image: url('Kateriina.jpg');">
         <div class="hero-content">
             <h1>VALOKUVAUS</h1>
-            <p>Pysäytettyjä hetkiä Turun sydämessä.</p>
-            <a href="#portfolio" class="btn">Katso portfolio</a>
+            <p>Pysäytettyjä hetkiä Turussa.</p>
+            <a href="#portfolio" class="btn">Portfolio</a>
         </div>
     </section>
 
@@ -143,7 +132,7 @@
 
     <section id="about" class="about-duke">
         <div class="duke-image-container">
-            <img src="profiilikuva.jpg" alt="Du Phan - Valokuvaaja">
+            <img src="profiilikuva.jpg" alt="Du Phan">
         </div>
         <div class="duke-text">
             <h2>Moi, olen Duke.</h2>
@@ -160,28 +149,29 @@
     </section>
 
     <section id="prices" class="section-padding">
+        <div class="section-title"><h2>Hinnasto</h2></div>
         <div class="price-grid">
             <div class="price-card">
                 <h3>Potretti</h3>
                 <span class="price">60€</span>
-                <p>Korkealaatuista muotokuvausta miljöössä.</p>
+                <p>5 käsiteltyä kuvaa</p>
             </div>
-            <div class="price-card">
+            <div class="price-card" style="border-color: var(--accent);">
                 <h3>Bändikuva</h3>
-                <span class="price">100€</span>
-                <p>Promokuvat ja keikkatunnelmat.</p>
+                <span class="price">150€</span>
+                <p>10 käsiteltyä kuvaa</p>
             </div>
         </div>
     </section>
 
     <section id="contact" class="section-padding">
-        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 30px;">Suunnitellaanko kuvaukset?</h2>
+        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto;">
+            <h2 style="text-align: center; margin-bottom: 25px;">Ota yhteyttä</h2>
             <form action="https://formspree.io/f/mqeaealg" method="POST">
                 <input type="text" name="name" placeholder="Nimi" style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required>
                 <input type="email" name="email" placeholder="Sähköposti" style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required>
                 <textarea name="message" rows="5" placeholder="Kerro toiveistasi..." style="width:100%; padding:15px; margin-bottom:15px; border-radius:8px; border:1px solid #ddd;" required></textarea>
-                <button type="submit" class="btn" style="width: 100%;">LÄHETÄ VIESTI</button>
+                <button type="submit" class="btn" style="width: 100%;">LÄHETÄ</button>
             </form>
         </div>
     </section>
