@@ -59,17 +59,21 @@
         }
         .btn:hover { background: transparent; transform: translateY(-3px); }
 
+        /* --- PÄIVITETTY GALLERIA --- */
+        .gallery-title { text-align: center; margin-bottom: 40px; font-family: 'Montserrat'; font-size: 2.5rem; }
+        
         .portfolio-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 25px; 
         }
         .portfolio-item { 
             position: relative; 
-            height: 400px; 
+            height: 450px; 
             border-radius: 12px; 
             overflow: hidden; 
             cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .portfolio-item img { 
             width: 100%; 
@@ -78,15 +82,13 @@
             transition: transform 0.6s ease;
         }
         .portfolio-item:hover img { 
-            transform: scale(1.1); 
+            transform: scale(1.08); 
         }
 
         .portfolio-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
+            bottom: 0; left: 0; width: 100%;
+            padding: 30px 20px;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
             opacity: 0;
@@ -94,45 +96,25 @@
             display: flex;
             align-items: flex-end;
         }
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        .portfolio-overlay h3 {
-            font-family: 'Montserrat';
-            font-size: 1.2rem;
-            margin: 0;
-            transform: translateY(20px);
-            transition: transform 0.4s ease;
-        }
-        .portfolio-item:hover .portfolio-overlay h3 {
-            transform: translateY(0);
-        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+        .portfolio-overlay h3 { font-family: 'Montserrat'; font-size: 1.2rem; margin: 0; }
 
-        /* --- LIGHTBOX TYYLIT (KUVAN SUURENNUS) --- */
+        /* --- LIGHTBOX --- */
         .lightbox {
             display: none;
             position: fixed;
             z-index: 2000;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
+            justify-content: center; align-items: center;
             cursor: zoom-out;
         }
         .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 90%; max-height: 90%;
             border-radius: 5px;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease;
         }
-        .lightbox.active {
-            display: flex;
-        }
-        /* -------------------------------------- */
+        .lightbox.active { display: flex; }
 
         .about-duke { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 60px; padding: 100px 5%; }
         .duke-image-container { position: relative; width: 100%; max-width: 450px; }
@@ -159,7 +141,7 @@
         <nav class="navbar">
             <a href="#" class="logo">KAMERA<span>REPUSSA</span></a>
             <ul class="nav-links">
-                <li><a href="#portfolio">Työt</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="#about">Minusta</a></li>
                 <li><a href="#prices">Hinnasto</a></li>
                 <li><a href="#contact">Yhteys</a></li>
@@ -176,20 +158,39 @@
     </section>
 
     <section id="portfolio" class="section-padding">
+        <h2 class="gallery-title">Portfolio</h2>
         <div class="portfolio-grid">
+            
             <div class="portfolio-item" onclick="openLightbox(this)">
                 <img src="emma2.jpg" alt="Muotokuvaus">
                 <div class="portfolio-overlay"><h3>Muotokuvaus</h3></div>
             </div>
+
             <div class="portfolio-item" onclick="openLightbox(this)">
                 <img src="thestickycat.jpg" alt="Bändikuvaus">
                 <div class="portfolio-overlay"><h3>Bändikuvaus</h3></div>
             </div>
+
             <div class="portfolio-item" onclick="openLightbox(this)">
                 <img src="ruokakuva.jpg" alt="Ruokakuvaus">
                 <div class="portfolio-overlay"><h3>Ruokakuvaus</h3></div>
             </div>
-           
+
+            <div class="portfolio-item" onclick="openLightbox(this)">
+                <img src="kuva4.jpg" alt="Tapahtumakuvaus">
+                <div class="portfolio-overlay"><h3>Tapahtumat</h3></div>
+            </div>
+
+            <div class="portfolio-item" onclick="openLightbox(this)">
+                <img src="kuva5.jpg" alt="Miljöökuvaus">
+                <div class="portfolio-overlay"><h3>Miljöö</h3></div>
+            </div>
+
+            <div class="portfolio-item" onclick="openLightbox(this)">
+                <img src="kuva6.jpg" alt="Artistipotretti">
+                <div class="portfolio-overlay"><h3>Artistikuvat</h3></div>
+            </div>
+
         </div>
     </section>
 
@@ -202,10 +203,10 @@
             <img src="profiilikuva.jpg" alt="Duke">
         </div>
         <div class="duke-text">
-    <h2>Aitoutta, ei pönötystä.</h2>
-    <p>Unohda kiusaantunut hymy ja jäykkä pönötys. Mä etsin ne aidot hetket, naurut ja katseet. Valokuvaus on parhaimmillaan silloin, kun se tuntuu hyvältä ja näyttää sulta. Tehdään kuvauksesta hauska kokemus!</p>
-    <a href="#contact" class="btn">VARAA OMA HETKESI</a>
-</div>
+            <h2>Aitoutta, ei pönötystä.</h2>
+            <p>Unohda kiusaantunut hymy ja jäykkä pönötys. Mä etsin ne aidot hetket, naurut ja katseet. Valokuvaus on parhaimmillaan silloin, kun se tuntuu hyvältä ja näyttää sulta. Tehdään kuvauksesta hauska kokemus!</p>
+            <a href="#contact" class="btn">VARAA OMA HETKESI</a>
+        </div>
     </section>
 
     <section class="instagram-banner">
@@ -244,12 +245,12 @@
             const imgSrc = element.querySelector('img').src;
             document.getElementById('lightbox-img').src = imgSrc;
             document.getElementById('lightbox').classList.add('active');
-            document.body.style.overflow = 'hidden'; // Estää skrollauksen kun kuva on auki
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             document.getElementById('lightbox').classList.remove('active');
-            document.body.style.overflow = 'auto'; // Palauttaa skrollauksen
+            document.body.style.overflow = 'auto';
         }
     </script>
 
